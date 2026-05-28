@@ -1,14 +1,17 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Sistema de Tickets" id="sistema-tickets-uml">
-    <mxGraphModel dx="3433" dy="2193" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="2575" dy="1645" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="nota-equipe" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Equipe&lt;br&gt;Sistema de gestao de tickets internos&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;Julio (JCF) - Maikon (MDJ) - Rafael (RCZ)&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="40" width="400" x="167.5" y="60" as="geometry" />
+          <mxGeometry height="40" width="400" x="120" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-39" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="enum-setor">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Usuario&lt;/font&gt;" vertex="1">
-          <mxGeometry height="230" width="290" x="2470" y="673" as="geometry" />
+          <mxGeometry height="230" width="290" x="1518" y="1068" as="geometry" />
         </mxCell>
         <mxCell id="usuario-attrs" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- id: int&lt;br&gt;- nome: String&lt;br&gt;- email: String&lt;br&gt;- senhaHash: String&lt;br&gt;- dataCadastro: Date&lt;br&gt;- setor: Setor&lt;br&gt;- funcao: Funcao" vertex="1">
           <mxGeometry height="114" width="290" y="26" as="geometry" />
@@ -20,19 +23,19 @@
           <mxGeometry height="82" width="290" y="148" as="geometry" />
         </mxCell>
         <mxCell id="funcao" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#E3C800,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Funcao&lt;/font&gt;" vertex="1">
-          <mxGeometry height="144" width="240" x="2620" y="486" as="geometry" />
+          <mxGeometry height="164" width="240" x="1543" y="1699" as="geometry" />
         </mxCell>
         <mxCell id="funcao-attrs" parent="funcao" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- id: int&#xa;- nome: String&#xa;- permissoes: List&lt;Permissao&gt;&#xa;- ativo: boolean" vertex="1">
-          <mxGeometry height="54" width="240" y="26" as="geometry" />
+          <mxGeometry height="74" width="240" y="26" as="geometry" />
         </mxCell>
         <mxCell id="funcao-sep" parent="funcao" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="240" y="80" as="geometry" />
+          <mxGeometry height="8" width="240" y="100" as="geometry" />
         </mxCell>
         <mxCell id="funcao-methods" parent="funcao" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ getters/setters&#xa;+ temPermissao(p: Permissao): boolean&#xa;+ adicionarPermissao(p: Permissao)" vertex="1">
-          <mxGeometry height="56" width="240" y="88" as="geometry" />
+          <mxGeometry height="56" width="240" y="108" as="geometry" />
         </mxCell>
         <mxCell id="ticket" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Ticket&lt;/font&gt;" vertex="1">
-          <mxGeometry height="256" width="280" x="1950" y="660" as="geometry" />
+          <mxGeometry height="256" width="280" x="1523" y="432" as="geometry" />
         </mxCell>
         <mxCell id="ticket-attrs" parent="ticket" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- id: int&#xa;- titulo: String&#xa;- descricao: String&#xa;- setorDestino: Setor&#xa;- criadoPor: Usuario&#xa;- respondidoPor: Usuario&#xa;- status: Status&#xa;- prioridade: Prioridade&#xa;- categoria: Categoria&#xa;- dataAbertura: LocalDateTime&#xa;- dataFechamento: LocalDateTime" vertex="1">
           <mxGeometry height="174" width="280" y="26" as="geometry" />
@@ -43,8 +46,20 @@
         <mxCell id="ticket-methods" parent="ticket" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ getters/setters&#xa;+ compareTo(outro: Ticket): int" vertex="1">
           <mxGeometry height="48" width="280" y="208" as="geometry" />
         </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-51" edge="1" parent="1" source="mensagem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=none;endFill=0;endSize=15;sourcePerimeterSpacing=0;startArrow=open;startFill=0;strokeWidth=2;" target="telaticket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1723" y="763" />
+              <mxPoint x="1882" y="763" />
+              <mxPoint x="1882" y="433" />
+              <mxPoint x="2102" y="433" />
+              <mxPoint x="2102" y="93" />
+              <mxPoint x="1128" y="93" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="mensagem" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#e3c800, #ffffff);fontColor=#000000;strokeColor=default;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Mensagem&lt;/font&gt;" vertex="1">
-          <mxGeometry height="140" width="240" x="2360" y="460" as="geometry" />
+          <mxGeometry height="140" width="240" x="1543" y="813" as="geometry" />
         </mxCell>
         <mxCell id="mensagem-attrs" parent="mensagem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- id: int&#xa;- ticket: Ticket&#xa;- autor: Usuario&#xa;- texto: String&#xa;- dataEnvio: LocalDateTime" vertex="1">
           <mxGeometry height="80" width="240" y="26" as="geometry" />
@@ -56,7 +71,7 @@
           <mxGeometry height="26" width="240" y="114" as="geometry" />
         </mxCell>
         <mxCell id="basedao" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;OperacaoBD&lt;/font&gt;" vertex="1">
-          <mxGeometry height="110" width="290" x="1190" y="1570" as="geometry" />
+          <mxGeometry height="110" width="290" x="2822" y="960" as="geometry" />
         </mxCell>
         <mxCell id="basedao-stereo" parent="basedao" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;horizontal=1;" value="&lt;&lt;interface&gt;&gt;" vertex="1">
           <mxGeometry height="20" width="290" y="26" as="geometry" />
@@ -67,8 +82,8 @@
         <mxCell id="basedao-methods" parent="basedao" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ localizar() : boolean&#xa;+ atualizar(operacao : TipoOperacaoBD) : String" vertex="1">
           <mxGeometry height="56" width="290" y="54" as="geometry" />
         </mxCell>
-        <mxCell id="bd" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;BD&lt;/font&gt;" vertex="1">
-          <mxGeometry height="206" width="240" x="1560" y="1750" as="geometry" />
+        <mxCell id="bd" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;perimeterSpacing=2;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;BD&lt;/font&gt;" vertex="1">
+          <mxGeometry height="206" width="240" x="2462" y="967" as="geometry" />
         </mxCell>
         <mxCell id="bd-attrs" parent="bd" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- host: String&#xa;- port: int&#xa;- dbName: String&#xa;- login: String&#xa;- senha: String&#xa;- connection: Connection" vertex="1">
           <mxGeometry height="100" width="240" y="26" as="geometry" />
@@ -79,8 +94,27 @@
         <mxCell id="bd-methods" parent="bd" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ getters/setters&#xa;+ connect(): boolean&#xa;+ getConnection(): Connection&#xa;+ close(): boolean" vertex="1">
           <mxGeometry height="72" width="240" y="134" as="geometry" />
         </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-29" edge="1" parent="1" source="telalogin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="telaprincipal-attrs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-30" edge="1" parent="1" source="telalogin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0.978;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="usuario-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="457" y="1453" />
+              <mxPoint x="1663" y="1453" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-31" edge="1" parent="1" source="telalogin" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.497;entryY=1.003;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="RSQRT4FTKDlNVl4S_yjf-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="457" y="1453" />
+              <mxPoint x="2062" y="1453" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="telalogin" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiLogin&lt;/font&gt;" vertex="1">
-          <mxGeometry height="100" width="220" x="2243" y="1100" as="geometry" />
+          <mxGeometry height="100" width="220" x="292" y="1609" as="geometry" />
         </mxCell>
         <mxCell id="telalogin-attrs" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- campoEmail: JTextField&#xa;- campoSenha: JPasswordField" vertex="1">
           <mxGeometry height="40" width="220" y="26" as="geometry" />
@@ -91,32 +125,46 @@
         <mxCell id="telalogin-methods" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ entrar()" vertex="1">
           <mxGeometry height="26" width="220" y="74" as="geometry" />
         </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-73" edge="1" parent="1" source="telaprincipal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telalisttickets-methods">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-2" edge="1" parent="1" source="telaprincipal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="727" y="970" />
+              <mxPoint x="1290" y="970" />
+              <mxPoint x="1290" y="1030" />
+              <mxPoint x="1430" y="1030" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="telaprincipal" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiMenuPrincipal&lt;/font&gt;" vertex="1">
-          <mxGeometry height="100" width="220" x="1430" y="990" as="geometry" />
+          <mxGeometry height="258" width="220" x="562" y="1023" as="geometry" />
         </mxCell>
         <mxCell id="telaprincipal-attrs" parent="telaprincipal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- usuarioLogado: Usuario&#xa;- mnBarra: JMenuBar&#xa;- mnFuncao: JMenu&#xa;- mnUsuario: JMenu&#xa;- mnTicket: JMenu&#xa;- miFuncao: JMenuItem&#xa;- miUsuario: JMenuItem&#xa;- miTicket: JMenuItem" vertex="1">
-          <mxGeometry height="26" width="220" y="26" as="geometry" />
+          <mxGeometry height="124" width="220" y="26" as="geometry" />
         </mxCell>
         <mxCell id="telaprincipal-sep" parent="telaprincipal" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
-          <mxGeometry height="8" width="220" y="52" as="geometry" />
+          <mxGeometry height="8" width="220" y="150" as="geometry" />
         </mxCell>
         <mxCell id="telaprincipal-methods" parent="telaprincipal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ GuiMenuPrincipal()&#xa;+ inicializarComponentes()&#xa;+ definirEventos()&#xa;+ montarMenu()&#xa;+ abrir()&#xa;+ logout()" vertex="1">
-          <mxGeometry height="40" width="220" y="60" as="geometry" />
+          <mxGeometry height="100" width="220" y="158" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroUsuario&lt;/font&gt;" vertex="1">
-          <mxGeometry height="120" width="240" x="2220" y="1260" as="geometry" />
+          <mxGeometry height="124" width="240" x="932" y="1203" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-attrs" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- comboFuncao: JComboBox&lt;Funcao&gt;&#xa;- comboSetor: JComboBox&lt;Setor&gt;" vertex="1">
-          <mxGeometry height="40" width="240" y="26" as="geometry" />
+          <mxGeometry height="44" width="240" y="26" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-sep" parent="telacadusuario" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
-          <mxGeometry height="8" width="240" y="66" as="geometry" />
+          <mxGeometry height="8" width="240" y="70" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-methods" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ salvar()&#xa;+ cancelar()" vertex="1">
-          <mxGeometry height="46" width="240" y="74" as="geometry" />
+          <mxGeometry height="46" width="240" y="78" as="geometry" />
         </mxCell>
         <mxCell id="telacadfuncao" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroFuncao&lt;/font&gt;" vertex="1">
-          <mxGeometry height="120" width="210" x="1330" y="1360" as="geometry" />
+          <mxGeometry height="120" width="210" x="953" y="1643" as="geometry" />
         </mxCell>
         <mxCell id="telacadfuncao-attrs" parent="telacadfuncao" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- campoNome: JTextField&#xa;- checkPermissoes: List&lt;JCheckBox&gt;" vertex="1">
           <mxGeometry height="40" width="210" y="26" as="geometry" />
@@ -127,132 +175,87 @@
         <mxCell id="telacadfuncao-methods" parent="telacadfuncao" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ salvar()&#xa;+ cancelar()" vertex="1">
           <mxGeometry height="46" width="210" y="74" as="geometry" />
         </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-74" edge="1" parent="1" source="telalisttickets" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telaticket">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1062" y="663" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="telalisttickets" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarTickets&lt;/font&gt;" vertex="1">
-          <mxGeometry height="130" width="240" x="1420" y="800" as="geometry" />
+          <mxGeometry height="134" width="240" x="938" y="683" as="geometry" />
         </mxCell>
         <mxCell id="telalisttickets-attrs" parent="telalisttickets" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- tabelaTickets: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
-          <mxGeometry height="40" width="240" y="26" as="geometry" />
+          <mxGeometry height="44" width="240" y="26" as="geometry" />
         </mxCell>
         <mxCell id="telalisttickets-sep" parent="telalisttickets" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
-          <mxGeometry height="8" width="240" y="66" as="geometry" />
+          <mxGeometry height="8" width="240" y="70" as="geometry" />
         </mxCell>
         <mxCell id="telalisttickets-methods" parent="telalisttickets" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ atualizarLista()&#xa;+ abrirTicket()&#xa;+ pegarProximo()" vertex="1">
-          <mxGeometry height="56" width="240" y="74" as="geometry" />
+          <mxGeometry height="56" width="240" y="78" as="geometry" />
         </mxCell>
-        <mxCell id="telaticket" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiTicket&lt;/font&gt;" vertex="1">
-          <mxGeometry height="174" width="280" x="1370" y="578" as="geometry" />
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-72" edge="1" parent="1" source="telaticket" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="988" y="53" />
+              <mxPoint x="2135" y="53" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="telaticket" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroTicket&lt;/font&gt;" vertex="1">
+          <mxGeometry height="334" width="280" x="918" y="303" as="geometry" />
         </mxCell>
         <mxCell id="telaticket-attrs" parent="telaticket" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- ticketAtual: Ticket&#xa;- usuarioLogado: Usuario&#xa;- lblTitulo: JLabel&#xa;- txtDescricao: JTextArea&#xa;- lblStatus: JLabel&#xa;- lblPrioridade: JLabel&#xa;- lblCategoria: JLabel&#xa;- lblSetorDestino: JLabel&#xa;- lblCriadoPor: JLabel&#xa;- lblResponsavel: JLabel&#xa;- lblDataAbertura: JLabel&#xa;- areaMensagens: JTextArea&#xa;- campoResposta: JTextField&#xa;- btnFinalizar: JButton&#xa;- btnEnviarMensagem: JButton" vertex="1">
-          <mxGeometry height="74" width="280" y="26" as="geometry" />
+          <mxGeometry height="234" width="280" y="26" as="geometry" />
         </mxCell>
         <mxCell id="telaticket-sep" parent="telaticket" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
-          <mxGeometry height="8" width="280" y="100" as="geometry" />
+          <mxGeometry height="8" width="280" y="260" as="geometry" />
         </mxCell>
         <mxCell id="telaticket-methods" parent="telaticket" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ criarTicket()&#xa;+ responderTicket()&#xa;+ finalizarTicket()" vertex="1">
-          <mxGeometry height="66" width="280" y="108" as="geometry" />
+          <mxGeometry height="66" width="280" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-35" edge="1" parent="1" source="enum-status" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="ticket">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="enum-status" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i style=&quot;&quot;&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;&quot;&gt;Status&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;ABERTO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-weight: normal;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;EM_ATENDIMENTO&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;FECHADO&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="110" width="180" x="1730" y="820" as="geometry" />
+          <mxGeometry height="110" width="180" x="1808" y="163" as="geometry" />
         </mxCell>
-        <mxCell id="enum-prioridade" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#E3C800,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Prioridade&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;BAIXA&lt;br&gt;MEDIA&lt;br&gt;ALTA&lt;br&gt;URGENTE&lt;/font&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="120" width="180" x="2120" y="500" as="geometry" />
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-34" edge="1" parent="1" source="enum-prioridade" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="ticket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="enum-prioridade" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#E3C800,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Prioridade&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;BAIXA&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;MEDIA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;ALTA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;URGENTE&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="120" width="180" x="1573" y="123" as="geometry" />
         </mxCell>
         <mxCell id="enum-setor" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Setor&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent; font-weight: normal;&quot;&gt;TI&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-weight: normal;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;RH&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;FINANCEIRO&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;COMERCIAL&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;COMPRAS&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="130" width="180" x="2263" y="886" as="geometry" />
+          <mxGeometry height="130" width="180" x="1248" y="813" as="geometry" />
         </mxCell>
-        <mxCell id="enum-permissao" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#e3c800, #ffffff);fontColor=#000000;strokeColor=default;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Permissao&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;ABRIR_TICKET&lt;br&gt;RESPONDER_TICKET&lt;br&gt;FECHAR_TICKET&lt;br&gt;CADASTRAR_USUARIO&lt;br&gt;CADASTRAR_FUNCAO&lt;/font&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="130" width="200" x="2650" y="310" as="geometry" />
+        <mxCell id="enum-permissao" parent="1" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#e3c800, #ffffff);fontColor=#000000;strokeColor=default;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Permissao&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;ABRIR_TICKET&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;RESPONDER_TICKET&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;FECHAR_TICKET&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;CADASTRAR_USUARIO&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;CADASTRAR_FUNCAO&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
+          <mxGeometry height="130" width="200" x="1563" y="1963" as="geometry" />
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-33" edge="1" parent="1" source="enum-categoria" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="ticket">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="enum-categoria" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Categoria&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;DUVIDA&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i style=&quot;font-weight: normal;&quot;&gt;(outros a definir pela equipe)&lt;/i&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="90" width="200" x="1730" y="513" as="geometry" />
+          <mxGeometry height="90" width="200" x="1318" y="163" as="geometry" />
         </mxCell>
         <mxCell id="enum-tipooperacaobd" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;TipoOperacaoBD&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent; font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;INCLUSAO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); font-weight: normal;&quot;&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;ALTERACAO&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;EXCLUSAO&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
-          <mxGeometry height="110" width="200" x="930" y="1570" as="geometry" />
+          <mxGeometry height="110" width="200" x="3146" y="960" as="geometry" />
         </mxCell>
         <mxCell id="anexo" parent="1" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;dashed=1;" value="&lt;i&gt;Anexo&lt;/i&gt;" vertex="1">
-          <mxGeometry height="60" width="220" x="2345" y="1840" as="geometry" />
+          <mxGeometry height="60" width="220" x="207.5" y="718" as="geometry" />
         </mxCell>
         <mxCell id="anexo-stereo" parent="anexo" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;" value="(a decidir)" vertex="1">
           <mxGeometry height="34" width="220" y="26" as="geometry" />
         </mxCell>
         <mxCell id="arquivoticket" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;" value="ArquivoTicket" vertex="1">
-          <mxGeometry height="60" width="180" x="2260" y="1960" as="geometry" />
+          <mxGeometry height="60" width="180" x="122.5" y="838" as="geometry" />
         </mxCell>
         <mxCell id="arquivoticket-vazio" parent="arquivoticket" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;" value="(a definir)" vertex="1">
           <mxGeometry height="34" width="180" y="26" as="geometry" />
         </mxCell>
         <mxCell id="arquivomensagem" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#B85450;fillColor=#F8CECC;" value="ArquivoMensagem" vertex="1">
-          <mxGeometry height="60" width="180" x="2470" y="1960" as="geometry" />
+          <mxGeometry height="60" width="180" x="332.5" y="838" as="geometry" />
         </mxCell>
         <mxCell id="arquivomensagem-vazio" parent="arquivomensagem" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontStyle=2;" value="(a definir)" vertex="1">
           <mxGeometry height="34" width="180" y="26" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-usuario-funcao" edge="1" parent="1" source="usuario" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" target="funcao">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-ticket-usuario" edge="1" parent="1" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.115;entryDx=0;entryDy=0;entryPerimeter=0;" target="usuario-methods">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2230" y="830" />
-              <mxPoint x="2430" y="830" />
-            </Array>
-            <mxPoint x="2230" y="830" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-ticket-mensagem" edge="1" parent="1" source="mensagem" style="endArrow=diamondThin;endFill=1;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;entryX=1;entryY=0.31;entryDx=0;entryDy=0;entryPerimeter=0;" target="ticket-attrs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2370" y="740" />
-            </Array>
-            <mxPoint x="2330" y="740" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-usuariodao-base" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-10" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.994;entryY=0.233;entryDx=0;entryDy=0;dashed=1;exitX=1.006;exitY=0.755;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="bd-attrs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2830" y="1122" />
-              <mxPoint x="2830" y="1682" />
-              <mxPoint x="2120" y="1682" />
-              <mxPoint x="2120" y="1799" />
-            </Array>
-            <mxPoint x="2830" y="1070" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-ticketdao-base" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-21" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.273;exitY=1.007;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="bd">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2019" y="1280" />
-              <mxPoint x="1830" y="1280" />
-              <mxPoint x="1830" y="1640" />
-              <mxPoint x="1620" y="1640" />
-            </Array>
-            <mxPoint x="2018.6799999999998" y="1183.1999999999998" as="sourcePoint" />
-            <mxPoint x="1830" y="1600" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-mensagemdao-base" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-23" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.222;entryDx=0;entryDy=0;entryPerimeter=0;" target="bd-methods">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2563" y="180" />
-              <mxPoint x="3088" y="180" />
-              <mxPoint x="3088" y="1760" />
-              <mxPoint x="2313" y="1760" />
-              <mxPoint x="2313" y="1900" />
-            </Array>
-            <mxPoint x="2632.5800000000004" y="209.67200000000003" as="sourcePoint" />
-            <mxPoint x="1972.51" y="1900" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-funcaodao-base" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-14" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitX=-0.004;exitY=0.641;exitDx=0;exitDy=0;exitPerimeter=0;" target="bd">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2070" y="1573" />
-              <mxPoint x="2070" y="1680" />
-              <mxPoint x="1740" y="1680" />
-            </Array>
-            <mxPoint x="2220" y="1570" as="sourcePoint" />
-            <mxPoint x="-251" y="764.9999999999998" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="rel-arquivoticket-anexo" edge="1" parent="1" source="arquivoticket" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#B85450;" target="anexo">
           <mxGeometry relative="1" as="geometry" />
@@ -260,245 +263,8 @@
         <mxCell id="rel-arquivomensagem-anexo" edge="1" parent="1" source="arquivomensagem" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#B85450;" target="anexo">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telalogin-telaprincipal" edge="1" parent="1" source="telalogin" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="telaprincipal-attrs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2250" y="980" />
-              <mxPoint x="1680" y="980" />
-              <mxPoint x="1680" y="1029" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-operacaobd-tipo" edge="1" parent="1" source="basedao-methods" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;exitX=-0.001;exitY=0.015;exitDx=0;exitDy=0;exitPerimeter=0;" target="enum-tipooperacaobd">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1170" y="1625" />
-              <mxPoint x="1170" y="1625" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-funcao-permissao" edge="1" parent="1" source="funcao" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.25;exitY=0;exitDx=0;exitDy=0;" target="enum-permissao">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-usuario-setor" edge="1" parent="1" source="usuario" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="enum-setor">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2398" y="860" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-ticket-status" edge="1" parent="1" source="ticket-attrs" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=-0.002;exitY=0.912;exitDx=0;exitDy=0;exitPerimeter=0;" target="enum-status">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-ticket-prioridade" edge="1" parent="1" source="ticket" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" target="enum-prioridade">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-ticket-setor" edge="1" parent="1" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="enum-setor">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2308" y="860" />
-            </Array>
-            <mxPoint x="2230" y="860" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-ticket-categoria" edge="1" parent="1" source="ticket" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="enum-categoria">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-mensagem-usuario" edge="1" parent="1" source="mensagem-methods" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.556;exitY=0.995;exitDx=0;exitDy=0;entryX=0.221;entryY=0.004;entryDx=0;entryDy=0;exitPerimeter=0;entryPerimeter=0;" target="usuario">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2493" y="650" />
-              <mxPoint x="2534" y="650" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telalogin-usuariodao" edge="1" parent="1" source="telalogin" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.091;entryY=0.992;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-12">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2353" y="1230" />
-              <mxPoint x="2516" y="1230" />
-            </Array>
-            <mxPoint x="2516.6" y="1213.7440000000001" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telacadusuario-usuariodao" edge="1" parent="1" source="telacadusuario" style="html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.241;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;strokeColor=default;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;startSize=9;fillColor=light-dark(#F0A30A,#FFFFFF);startArrow=diamondThin;startFill=1;" target="RSQRT4FTKDlNVl4S_yjf-12">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2400" y="1240" />
-              <mxPoint x="2560" y="1240" />
-            </Array>
-            <mxPoint x="2559.7200000000003" y="1213.024" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telacadusuario-funcaodao" edge="1" parent="1" source="telacadusuario" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.553;entryY=-0.004;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-13">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2420" y="1430" />
-              <mxPoint x="2420" y="1430" />
-            </Array>
-            <mxPoint x="2420" y="1490" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telalisttickets-ticketdao" edge="1" parent="1" source="telalisttickets" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.585;entryY=1.002;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-21">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1270" y="865" />
-              <mxPoint x="1270" y="1240" />
-              <mxPoint x="2110" y="1240" />
-            </Array>
-            <mxPoint x="2110" y="1176" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaticket-ticketdao" edge="1" parent="1" source="telaticket" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=-0.003;entryY=0.818;entryDx=0;entryDy=0;entryPerimeter=0;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1330" y="665" />
-              <mxPoint x="1330" y="1150" />
-            </Array>
-            <mxPoint x="1939.1599999999999" y="1149.792" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaticket-mensagemdao" edge="1" parent="1" source="telaticket" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0;entryY=0.089;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-26">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1510" y="333" />
-            </Array>
-            <mxPoint x="2350" y="333" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaprincipal-cadusuario" edge="1" parent="1" source="telaprincipal" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1600" y="1420" />
-              <mxPoint x="2260" y="1420" />
-            </Array>
-            <mxPoint x="2260" y="1382" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaprincipal-cadfuncao" edge="1" parent="1" source="telaprincipal" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="telacadfuncao">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1480" y="1220" />
-              <mxPoint x="1480" y="1220" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaprincipal-listtickets" edge="1" parent="1" source="telaprincipal" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="telalisttickets">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-telalogin-usuario" edge="1" parent="1" source="telalogin" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.192;entryY=1.032;entryDx=0;entryDy=0;entryPerimeter=0;" target="usuario-methods">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2410" y="1050" />
-              <mxPoint x="2470" y="1050" />
-              <mxPoint x="2470" y="960" />
-              <mxPoint x="2526" y="960" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telacadusuario-funcao" edge="1" parent="1" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="funcao-attrs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2460" y="1290" />
-              <mxPoint x="2920" y="1290" />
-              <mxPoint x="2920" y="539" />
-            </Array>
-            <mxPoint x="2460" y="1290" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telacadfuncao-funcao" edge="1" parent="1" source="telacadfuncao" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="funcao">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1230" y="1420" />
-              <mxPoint x="1230" y="130" />
-              <mxPoint x="2970" y="130" />
-              <mxPoint x="2970" y="460" />
-              <mxPoint x="2800" y="460" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telalisttickets-ticket" edge="1" parent="1" source="telalisttickets" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.239;entryY=1.029;entryDx=0;entryDy=0;entryPerimeter=0;" target="ticket-methods">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1700" y="865" />
-              <mxPoint x="1700" y="960" />
-              <mxPoint x="2017" y="960" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaticket-ticket" edge="1" parent="1" source="telaticket-attrs" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=-0.004;entryY=0.595;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.821;exitDx=0;exitDy=0;exitPerimeter=0;" target="ticket-attrs">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1690" y="665" />
-              <mxPoint x="1690" y="790" />
-              <mxPoint x="1949" y="790" />
-            </Array>
-            <mxPoint x="2000" y="970" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telaticket-mensagem" edge="1" parent="1" source="telaticket" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="mensagem">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1620" y="480" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-usuariodao-usuario" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-9" style="html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.586;exitY=-0.002;exitDx=0;exitDy=0;exitPerimeter=0;startSize=9;strokeColor=default;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;fillColor=light-dark(#F0A30A,#FFFFFF);startArrow=diamondThin;startFill=1;" target="usuario">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points" />
-            <mxPoint x="2660" y="1040" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-ticketdao-ticket" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-18" style="html=1;edgeStyle=orthogonalEdgeStyle;entryX=0.785;entryY=0.992;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.791;exitY=-0.003;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;startSize=9;fillColor=light-dark(#F0A30A,#FFFFFF);startArrow=diamondThin;startFill=1;" target="ticket-methods">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2169" y="1010" />
-              <mxPoint x="2170" y="1010" />
-            </Array>
-            <mxPoint x="2169.8" y="1006" as="sourcePoint" />
-            <mxPoint x="2270" y="1020" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-mensagemdao-mensagem" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-26" style="html=1;edgeStyle=orthogonalEdgeStyle;exitX=0.478;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;startSize=9;fillColor=light-dark(#F0A30A,#FFFFFF);startArrow=diamondThin;startFill=1;" target="mensagem">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2489" y="410" />
-              <mxPoint x="2490" y="410" />
-            </Array>
-            <mxPoint x="2489.16" y="391.36799999999994" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-funcaodao-funcao" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-16" style="html=1;edgeStyle=orthogonalEdgeStyle;exitX=1.003;exitY=0.046;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=top;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;startSize=9;fillColor=light-dark(#F0A30A,#FFFFFF);startArrow=diamondThin;startFill=1;" target="funcao">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2880" y="1610" />
-              <mxPoint x="2880" y="670" />
-              <mxPoint x="2810" y="670" />
-            </Array>
-            <mxPoint x="2560.2799999999997" y="1610.0500000000002" as="sourcePoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telalisttickets-telaticket" edge="1" parent="1" source="telalisttickets" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="telaticket">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="rel-telacadfuncao-funcaodao" edge="1" parent="1" source="telacadfuncao" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.309;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-13">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2350" y="1460" />
-            </Array>
-            <mxPoint x="2350" y="1490" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rel-telacadusuario-usuario" edge="1" parent="1" source="telacadusuario" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;" target="usuario">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2970" y="1320" />
-              <mxPoint x="2970" y="788" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-1" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="470" width="335" x="200" y="120" as="geometry" />
+          <mxGeometry height="470" width="335" x="152.5" y="160" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-2" parent="RSQRT4FTKDlNVl4S_yjf-1" style="rounded=0;whiteSpace=wrap;html=1;fontColor=#000000;" value="" vertex="1">
           <mxGeometry height="470" width="335" as="geometry" />
@@ -522,7 +288,7 @@
           <mxGeometry height="30" width="207.5" x="61.25" y="11" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;UsuarioDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="170" width="290" x="2490" y="1040" as="geometry" />
+          <mxGeometry height="170" width="290" x="1918" y="1098" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-10" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- usuario: Usuario&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- statement: PreparedStatement&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- resultSet: ResultSet&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- sql: String&lt;/span&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="74" width="290" y="26" as="geometry" />
@@ -533,8 +299,8 @@
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-12" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ localizar(id: int) : boolean&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ atualizar(operacao: TipoOperacaoBD) : String&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ buscarPorEmail(email: String) : Usuario&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="62" width="290" y="108" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-13" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;FuncaoDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="150" width="290" x="2260" y="1500" as="geometry" />
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-13" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;rounded=0;shadow=0;glass=0;swimlaneLine=1;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;FuncaoDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="150" width="290" x="1918" y="1706" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-14" parent="RSQRT4FTKDlNVl4S_yjf-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- funcao: Funcao&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- statement: PreparedStatement&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- resultSet: ResultSet&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- sql: String&lt;/span&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="74" width="290" y="26" as="geometry" />
@@ -545,17 +311,8 @@
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-16" parent="RSQRT4FTKDlNVl4S_yjf-13" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ localizar(id: int) : boolean&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ atualizar(operacao: TipoOperacaoBD) : String&lt;/span&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="42" width="290" y="108" as="geometry" />
         </mxCell>
-        <mxCell id="Tzv23EINWWk8GMKdbrYG-8" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-14" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;entryX=0.634;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1.002;exitY=0.462;exitDx=0;exitDy=0;exitPerimeter=0;" value="">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="2671" y="1560" />
-            </Array>
-            <mxPoint x="2577" y="1560" as="sourcePoint" />
-            <mxPoint x="2670.86" y="1210.682" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-18" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;TicketDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="170" width="290" x="1940" y="1016" as="geometry" />
+          <mxGeometry height="170" width="290" x="1918" y="475" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-19" parent="RSQRT4FTKDlNVl4S_yjf-18" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- ticket: Ticket&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- statement: PreparedStatement&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- resultSet: ResultSet&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- sql: String&lt;/span&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="74" width="290" y="26" as="geometry" />
@@ -566,8 +323,20 @@
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-21" parent="RSQRT4FTKDlNVl4S_yjf-18" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ localizar(id: int) : boolean&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ atualizar(operacao: TipoOperacaoBD) : String&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ proximoDaFila(s: Setor) : Ticket&lt;/span&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="62" width="290" y="108" as="geometry" />
         </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-50" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=none;endFill=0;endSize=15;sourcePerimeterSpacing=0;startArrow=open;startFill=0;strokeWidth=2;" target="telaticket">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2116" y="763" />
+              <mxPoint x="1882" y="763" />
+              <mxPoint x="1882" y="433" />
+              <mxPoint x="2102" y="433" />
+              <mxPoint x="2102" y="93" />
+              <mxPoint x="1128" y="93" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-23" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#e3c800, #ffffff);fontColor=#000000;strokeColor=default;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;MensagemDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="164" width="270" x="2360" y="220" as="geometry" />
+          <mxGeometry height="164" width="270" x="1913" y="801" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-24" parent="RSQRT4FTKDlNVl4S_yjf-23" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- mensagem: Mensagem&lt;br&gt;- statement: PreparedStatement&lt;br&gt;- resultSet: ResultSet&lt;br&gt;- sql: String" vertex="1">
           <mxGeometry height="74" width="270" y="26" as="geometry" />
@@ -579,9 +348,9 @@
           <mxGeometry height="56" width="270" y="108" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-27" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="Main" vertex="1">
-          <mxGeometry height="86" width="190" x="1990" y="1310" as="geometry" />
+          <mxGeometry height="86" width="190" x="80" y="1820" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-28" parent="RSQRT4FTKDlNVl4S_yjf-27" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value=" " vertex="1">
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-28" parent="RSQRT4FTKDlNVl4S_yjf-27" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="&lt;&gt;" vertex="1">
           <mxGeometry height="26" width="190" y="26" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-29" parent="RSQRT4FTKDlNVl4S_yjf-27" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" value="" vertex="1">
@@ -590,32 +359,8 @@
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-30" parent="RSQRT4FTKDlNVl4S_yjf-27" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+ main(args: String[]): static void" vertex="1">
           <mxGeometry height="26" width="190" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-32" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-27" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.227;entryY=1.047;entryDx=0;entryDy=0;entryPerimeter=0;edgeStyle=orthogonalEdgeStyle;" target="telalogin-methods" value="">
-          <mxGeometry relative="1" width="160" as="geometry">
-            <Array as="points">
-              <mxPoint x="2133" y="1240" />
-              <mxPoint x="2293" y="1240" />
-            </Array>
-            <mxPoint x="2140" y="1330" as="sourcePoint" />
-            <mxPoint x="2300" y="1330" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-
-        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="GuiListarUsuarios" vertex="1">
-          <mxGeometry height="130" width="240" x="3000" y="200" as="geometry" />
-        </mxCell>
-        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
-          <mxGeometry height="40" width="240" y="26" as="geometry" />
-        </mxCell>
-        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="240" y="66" as="geometry" />
-        </mxCell>
-        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
-          <mxGeometry height="56" width="240" y="74" as="geometry" />
-        </mxCell>
-
-        <mxCell id="telalistfuncoes" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="GuiListarFuncoes" vertex="1">
-          <mxGeometry height="130" width="240" x="3000" y="380" as="geometry" />
+        <mxCell id="telalistfuncoes" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarFuncoes&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="240" x="938" y="1815" as="geometry" />
         </mxCell>
         <mxCell id="telalistfuncoes-attrs" parent="telalistfuncoes" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- tabelaFuncoes: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
           <mxGeometry height="40" width="240" y="26" as="geometry" />
@@ -626,39 +371,344 @@
         <mxCell id="telalistfuncoes-methods" parent="telalistfuncoes" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarFuncao()" vertex="1">
           <mxGeometry height="56" width="240" y="74" as="geometry" />
         </mxCell>
-
-        <mxCell id="rel-telaprincipal-listusuarios" edge="1" parent="1" source="telaprincipal" target="telalistusuarios" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-20" edge="1" parent="1" source="basedao-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;endArrow=open;endFill=0;startSize=15;sourcePerimeterSpacing=0;endSize=15;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;strokeWidth=2;dashed=1;" target="enum-tipooperacaobd">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telaprincipal-listfuncoes" edge="1" parent="1" source="telaprincipal" target="telalistfuncoes" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-28" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="telalogin-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="175" y="1655" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-32" edge="1" parent="1" source="enum-permissao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1.014;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="funcao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1663" y="1883" />
+              <mxPoint x="1663" y="1883" />
+            </Array>
+            <mxPoint x="1658" y="1883" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-40" edge="1" parent="1" source="ticket-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.24;exitY=1.014;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="enum-setor">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telalistusuarios-usuariodao" edge="1" parent="1" source="telalistusuarios" target="RSQRT4FTKDlNVl4S_yjf-9" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-42" edge="1" parent="1" source="ticket-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.504;exitY=1.049;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="usuario">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1664" y="773" />
+              <mxPoint x="1503" y="773" />
+              <mxPoint x="1503" y="983" />
+              <mxPoint x="1663" y="983" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-43" edge="1" parent="1" source="mensagem-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.803;exitY=1.031;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="usuario">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telalistusuarios-usuario" edge="1" parent="1" source="telalistusuarios" target="usuario" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-44" edge="1" parent="1" source="mensagem" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.713;entryY=0.985;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=none;endFill=0;endSize=15;sourcePerimeterSpacing=0;startArrow=diamondThin;startFill=1;strokeWidth=2;" target="ticket-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1663" y="783" />
+              <mxPoint x="1692" y="783" />
+              <mxPoint x="1692" y="713" />
+              <mxPoint x="1723" y="713" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-45" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=classicThin;endFill=1;endSize=15;sourcePerimeterSpacing=0;startArrow=none;startFill=0;strokeWidth=2;" target="mensagem-attrs">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telalistfuncoes-funcaodao" edge="1" parent="1" source="telalistfuncoes" target="RSQRT4FTKDlNVl4S_yjf-13" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-46" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=classicThin;endFill=1;endSize=15;sourcePerimeterSpacing=0;startArrow=none;startFill=0;strokeWidth=2;" target="ticket-attrs">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-telalistfuncoes-funcao" edge="1" parent="1" source="telalistfuncoes" target="funcao" style="endArrow=open;endFill=0;endSize=12;html=1;edgeStyle=orthogonalEdgeStyle;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-47" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=classicThin;endFill=1;endSize=15;sourcePerimeterSpacing=0;startArrow=none;startFill=0;strokeWidth=2;" target="usuario-attrs">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="rel-implements-usuariodao" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-9" target="basedao" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-49" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=classicThin;endFill=1;endSize=15;sourcePerimeterSpacing=0;startArrow=none;startFill=0;strokeWidth=2;" target="funcao-attrs">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-implements-funcaodao" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-13" target="basedao" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-53" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="bd-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2332" y="1161" />
+              <mxPoint x="2332" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-56" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="bd-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2332" y="937" />
+              <mxPoint x="2332" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-57" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="bd-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2332" y="1769" />
+              <mxPoint x="2332" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-58" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="bd-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2332" y="614" />
+              <mxPoint x="2332" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-59" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=block;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="basedao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2772" y="1835" />
+              <mxPoint x="2772" y="1043" />
+              <mxPoint x="2822" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-61" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=block;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="basedao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2772" y="1237" />
+              <mxPoint x="2772" y="1043" />
+              <mxPoint x="2822" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-63" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=block;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="basedao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2772" y="864" />
+              <mxPoint x="2772" y="1043" />
+              <mxPoint x="2822" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-64" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=block;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="basedao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2772" y="538" />
+              <mxPoint x="2772" y="1043" />
+              <mxPoint x="2822" y="1043" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-65" edge="1" parent="1" source="telalisttickets-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="ticket-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1352" y="731" />
+              <mxPoint x="1352" y="664" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-67" edge="1" parent="1" source="telaticket-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="ticket-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1352" y="446" />
+              <mxPoint x="1352" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-68" edge="1" parent="1" source="telalisttickets-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-18">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="731" />
+              <mxPoint x="800" y="53" />
+              <mxPoint x="2136" y="53" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-75" edge="1" parent="1" source="telaprincipal-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telalistusuarios-attrs">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-implements-ticketdao" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-18" target="basedao" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-76" edge="1" parent="1" source="telaprincipal-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telalistfuncoes-methods">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel-implements-mensagemdao" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-23" target="basedao" style="endArrow=block;endFill=0;endSize=14;html=1;edgeStyle=orthogonalEdgeStyle;dashed=1;">
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-77" edge="1" parent="1" source="telalistfuncoes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.499;entryY=1.026;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telacadfuncao-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1058" y="1773" />
+              <mxPoint x="1058" y="1773" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-80" edge="1" parent="1" source="usuario-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;exitX=0.706;exitY=0.998;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="funcao">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1723" y="1593" />
+              <mxPoint x="1663" y="1593" />
+            </Array>
+            <mxPoint x="1732" y="1303" as="sourcePoint" />
+            <mxPoint x="1733" y="1633" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-82" edge="1" parent="1" source="telacadusuario-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-methods">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1342" y="1249" />
+              <mxPoint x="1342" y="1257" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-83" edge="1" parent="1" source="telalistusuarios-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-methods">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-84" edge="1" parent="1" source="telalistusuarios-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.497;entryY=0.999;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1262" y="1107" />
+              <mxPoint x="1262" y="1513" />
+              <mxPoint x="2062" y="1513" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-85" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;entryX=0.497;entryY=1.001;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1262" y="1294" />
+              <mxPoint x="1262" y="1513" />
+              <mxPoint x="2062" y="1513" />
+            </Array>
+            <mxPoint x="1172" y="1294.5" as="sourcePoint" />
+            <mxPoint x="2062" y="1293" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-5" edge="1" parent="1" source="telalistusuarios" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1118" y="970" />
+              <mxPoint x="1290" y="970" />
+              <mxPoint x="1290" y="1030" />
+              <mxPoint x="1430" y="1030" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarUsuarios&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="240" x="938" y="1005" as="geometry" />
+        </mxCell>
+        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
+          <mxGeometry height="40" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="66" as="geometry" />
+        </mxCell>
+        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
+          <mxGeometry height="56" width="240" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-78" edge="1" parent="1" source="telalistusuarios-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.476;exitY=1.005;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;exitPerimeter=0;" target="telacadusuario">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1052" y="1173" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-88" edge="1" parent="1" source="telacadusuario-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="funcao">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="902" y="1300" />
+              <mxPoint x="902" y="1573" />
+              <mxPoint x="1603" y="1573" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-90" edge="1" parent="1" source="funcao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;entryX=0.497;entryY=0.999;entryDx=0;entryDy=0;entryPerimeter=0;" target="RSQRT4FTKDlNVl4S_yjf-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1723" y="1643" />
+              <mxPoint x="1772" y="1643" />
+              <mxPoint x="1772" y="1513" />
+              <mxPoint x="2062" y="1513" />
+              <mxPoint x="2062" y="1268" />
+            </Array>
+            <mxPoint x="2062" y="1283" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-91" edge="1" parent="1" source="telalistfuncoes-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="funcao-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1362" y="1861" />
+              <mxPoint x="1362" y="1762" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-93" edge="1" parent="1" source="telacadfuncao-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="funcao-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1362" y="1689" />
+              <mxPoint x="1362" y="1762" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-94" edge="1" parent="1" source="telacadfuncao-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1252" y="1740" />
+              <mxPoint x="1252" y="2133" />
+              <mxPoint x="1862" y="2133" />
+              <mxPoint x="1862" y="1835" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pqx6_gMtB0x2yJiwBSkp-96" edge="1" parent="1" source="telalistfuncoes-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1252" y="1917" />
+              <mxPoint x="1252" y="2133" />
+              <mxPoint x="1862" y="2133" />
+              <mxPoint x="1862" y="1835" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-3" edge="1" parent="1" source="telalisttickets-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="789" />
+              <mxPoint x="1220" y="970" />
+              <mxPoint x="1290" y="970" />
+              <mxPoint x="1290" y="1030" />
+              <mxPoint x="1430" y="1030" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-4" edge="1" parent="1" source="telalistfuncoes-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="918" y="1861" />
+              <mxPoint x="918" y="1620" />
+              <mxPoint x="1430" y="1620" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-6" edge="1" parent="1" source="telaticket-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1220" y="604" />
+              <mxPoint x="1220" y="970" />
+              <mxPoint x="1290" y="970" />
+              <mxPoint x="1290" y="1030" />
+              <mxPoint x="1430" y="1030" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FvpgfYNPFZ7KdVLirFTl-7" edge="1" parent="1" source="telaticket-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="870" y="604" />
+              <mxPoint x="870" y="970" />
+              <mxPoint x="1290" y="970" />
+              <mxPoint x="1290" y="1030" />
+              <mxPoint x="1430" y="1030" />
+              <mxPoint x="1430" y="1151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
