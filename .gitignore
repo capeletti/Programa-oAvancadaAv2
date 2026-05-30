@@ -19,3 +19,6 @@ build/
 db.properties
 local.properties
 .env
+# Pastas de saida geradas pelo Eclipse
+bin/
+build/
