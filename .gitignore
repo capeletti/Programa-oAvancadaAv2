@@ -19,3 +19,6 @@ build/
 db.properties
 local.properties
 .env
+
+.classpath
+.project
