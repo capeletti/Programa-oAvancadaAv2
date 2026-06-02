@@ -1,0 +1,9 @@
+package model;
+
+public enum Permissao {
+	ABRIR_TICKET,
+	RESPONDER_TICKET,
+	FECHAR_TICKET,
+	CADASTRAR_USUARIO,
+	CADASTRAR_FUNCAO
+}

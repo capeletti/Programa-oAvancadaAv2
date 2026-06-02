@@ -19,12 +19,4 @@ build/
 db.properties
 local.properties
 .env
-<<<<<<< HEAD
-# Pastas de saida geradas pelo Eclipse
-bin/
-build/
-=======
 
-.classpath
-.project
->>>>>>> cdce39859803dbd3d5064c622dcaf663fe2333ae
