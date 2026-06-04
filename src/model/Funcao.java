@@ -6,7 +6,7 @@ import java.util.List;
 public class Funcao {
 	private int id;
 	private String nome;
-	private List<Permissao> permissoes;
+	private ArrayList<Permissao> permissoes;
 	private boolean ativo;
 	
 	public Funcao() {
@@ -29,8 +29,8 @@ public class Funcao {
 		this.nome = nome;
 	}
 
-	public List<Permissao> getPermissoes() {
-		return permissoes;
+	public ArrayList<Permissao> getPermissoes() {
+	    return permissoes;
 	}
 
 	public void setPermissoes(List<Permissao> novasPermissoes) {
