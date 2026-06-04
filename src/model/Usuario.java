@@ -15,7 +15,7 @@ public class Usuario {
 	private Setor setor;
 	private Funcao funcao;
 	
-	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor) {
+	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor, Funcao funcao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -23,6 +23,7 @@ public class Usuario {
 		this.senhaHash = senhaHash;
 		this.dataCadastro = dataCadastro;
 		this.setor = setor;
+		this.funcao = funcao;
 	}
 
 	public int getId() {
@@ -46,8 +47,8 @@ public class Usuario {
 	public String getSenhaHash() {
 		return senhaHash;
 	}
-	public void setSenhaHash(String senhaHash) {
-		this.senhaHash = this.string2Hash(senhaHash);
+	public void setSenhaHash(String senha) {
+		this.senhaHash = this.string2Hash(senha);
 	}
 	public Date getDataCadastro() {
 		return dataCadastro;
@@ -91,7 +92,4 @@ public class Usuario {
         }
     }
 	
-	public boolean validaLogin (String email, String senha) {
-		return true;
-	}
 }

@@ -1,12 +1,12 @@
 package model;
 
 public enum Setor {
-    ADMINISTRAÇÃO,
+    ADMINISTRACAO,
     COMERCIAL,
     COMPRAS,
     FINANCEIRO,
     MARKETING,
-    PRODUÇÃO,
+    PRODUCAO,
     RH,
     TI
 }
