@@ -18,12 +18,9 @@ public class BancoSetup {
     }
 
     public void inicializar() {
-
         try {
-
             criarTabelas();
             inserirRegistroUsuario();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -31,20 +28,51 @@ public class BancoSetup {
 
     private void criarTabelas() throws SQLException {
 
-    	String sql = """
-    		    CREATE TABLE IF NOT EXISTS usuario (
-    		        id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    		        nome VARCHAR(100) NOT NULL,
-    		        email VARCHAR(150) NOT NULL UNIQUE,
-    		        senha VARCHAR(255) NOT NULL,
-    		        data_cadastro DATE NOT NULL,
-    		        setor VARCHAR(50) NOT NULL,
-    		        id_funcao INTEGER NULL
-    		    )
-    	""";
+        String sqlFuncao = """
+    	    CREATE TABLE IF NOT EXISTS funcao (
+    	    	id_funcao INT AUTO_INCREMENT PRIMARY KEY,
+    	    	nome VARCHAR(100) NOT NULL,
+    	    	ativo BOOLEAN NOT NULL
+        	)
+        """;
 
-        PreparedStatement statement = connection.prepareStatement(sql);
+        String sqlFuncaoPermissao = """
+        	CREATE TABLE IF NOT EXISTS funcao_permissao (
+    	    	id_funcao INT NOT NULL,
+    	    	permissao VARCHAR(50) NOT NULL,
 
+    	    	FOREIGN KEY (id_funcao)
+    	    	REFERENCES funcao(id_funcao)
+        		 	ON DELETE CASCADE
+        	)
+        """;
+
+        String sqlUsuario = """
+        	CREATE TABLE IF NOT EXISTS usuario (
+    	    	id INT AUTO_INCREMENT PRIMARY KEY,
+    	    	nome VARCHAR(100) NOT NULL,
+    	    	email VARCHAR(150) NOT NULL UNIQUE,
+    	    	senha VARCHAR(255) NOT NULL,
+    	    	data_cadastro DATE NOT NULL,
+    	    	setor VARCHAR(50) NOT NULL,
+    	    	id_funcao INT,
+
+    	    	FOREIGN KEY (id_funcao)
+    	    	REFERENCES funcao(id_funcao)
+        	)
+        """;
+
+        PreparedStatement statement;
+
+        statement = connection.prepareStatement(sqlFuncao);
+        statement.execute();
+        statement.close();
+
+        statement = connection.prepareStatement(sqlFuncaoPermissao);
+        statement.execute();
+        statement.close();
+
+        statement = connection.prepareStatement(sqlUsuario);
         statement.execute();
         statement.close();
     }

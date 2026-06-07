@@ -95,8 +95,7 @@ public class GuiLogin extends JFrame {
             return;
         }
 		try {
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            usuarioDAO.setBd(GuiLogin.this.bd);
+            UsuarioDAO usuarioDAO = new UsuarioDAO(this.bd);
 
             Usuario usuario = usuarioDAO.validarLogin(email, senha);
 
@@ -106,8 +105,8 @@ public class GuiLogin extends JFrame {
 
                 dispose();
 
-                GuiListarFuncoes tela =new GuiListarFuncoes(usuario);
-
+                GuiListarUsuario tela = new GuiListarUsuario(this.bd);
+                
                 tela.setVisible(true);
 
             } else {

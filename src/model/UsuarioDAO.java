@@ -11,43 +11,23 @@ public class UsuarioDAO {
 	
 	private String sql;
 	
-	public UsuarioDAO() {
-		bd = null;
-	}
-
-	public void setBd(BD bd) {
+	public UsuarioDAO(BD bd) {
 		this.bd = bd;
 	}
 	
 	public Usuario localizar(int id) {
 
-	    sql = "SELECT * FROM usuario WHERE id = ?";
+		sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.id = ?";
 
 	    try {
 
-	        statement = bd.connection.prepareStatement(sql);
+	        statement = bd.getConnection().prepareStatement(sql);
 	        statement.setInt(1, id);
 
 	        resultSet = statement.executeQuery();
 
 	        if (resultSet.next()) {
-	        	
-	        	Funcao funcao = new Funcao();
-	        	funcao.setId(resultSet.getInt("id_funcao"));
-
-	        	FuncaoDAO funcaoDAO = new FuncaoDAO(funcao);
-	        	funcaoDAO.localizar();
-
-				Usuario usuario = new Usuario(
-					    resultSet.getInt("id"),
-					    resultSet.getString("nome"),
-					    resultSet.getString("email"),
-					    resultSet.getString("senha"),
-					    resultSet.getDate("data_cadastro"),
-					    Setor.valueOf(resultSet.getString("setor")),
-					    funcao
-				);
-	            return usuario;
+	            return carregarUsuario(resultSet);
 	        }
 
 	    } catch (SQLException erro) {
@@ -59,32 +39,16 @@ public class UsuarioDAO {
 	
 	public ArrayList<Usuario> listar() {
 	    ArrayList<Usuario> lista = new ArrayList<>();
-	    sql = "SELECT * FROM usuario";
+	    sql = SQL_USUARIO_COM_FUNCAO;
 
 	    try {
 
-	        statement = bd.connection.prepareStatement(sql);
+	        statement = bd.getConnection().prepareStatement(sql);
 
 	        resultSet = statement.executeQuery();
 
 	        while (resultSet.next()) {
-	        	Funcao funcao = new Funcao();
-		        funcao.setId(resultSet.getInt("id_funcao"));
-	
-		        FuncaoDAO funcaoDAO = new FuncaoDAO(funcao);
-		        funcaoDAO.localizar();
-
-		        Usuario usuario = new Usuario(
-		        	    resultSet.getInt("id"),
-		        	    resultSet.getString("nome"),
-		        	    resultSet.getString("email"),
-		        	    resultSet.getString("senha"),
-		        	    resultSet.getDate("data_cadastro"),
-		        	    Setor.valueOf(resultSet.getString("setor")),
-		        	    funcao
-		        );
-
-	            lista.add(usuario);
+	            lista.add(carregarUsuario(resultSet));
 	        }
 
 	    } catch (SQLException e) {
@@ -104,33 +68,64 @@ public class UsuarioDAO {
 
 	        	sql = "INSERT INTO usuario (nome, email, senha, data_cadastro, setor, id_funcao) VALUES (?, ?, ?, ?, ?, ?)";
 
-	            statement = bd.connection.prepareStatement(sql);
+	            statement = bd.getConnection().prepareStatement(sql);
 
 	            statement.setString(1, usuario.getNome());
 	            statement.setString(2, usuario.getEmail());
 	            statement.setString(3, usuario.getSenhaHash());
 	            statement.setDate(4, new java.sql.Date(usuario.getDataCadastro().getTime()));
 	            statement.setString(5, usuario.getSetor().name());
-	            statement.setInt(6, usuario.getFuncao().getId());
+	            if (usuario.getFuncao() != null) {
+	                statement.setInt(6, usuario.getFuncao().getId());
+	            } else {
+	                statement.setNull(6, Types.INTEGER);
+	            }
 	        }
 	        else if (operacao == TipoOperacaoBD.ALTERACAO) {
 
-	        	sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, setor = ?, id_funcao = ? WHERE id = ?";
-	        	
-	            statement = bd.connection.prepareStatement(sql);
+	            if (usuario.possuiSenha()) {
 
-	            statement.setString(1, usuario.getNome());
-	            statement.setString(2, usuario.getEmail());
-	            statement.setString(3, usuario.getSenhaHash());
-	            statement.setString(4, usuario.getSetor().name());
-	            statement.setInt(5, usuario.getFuncao().getId());
-	            statement.setInt(6, usuario.getId());
+	            	sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, setor = ?, id_funcao = ? WHERE id = ?";
+
+	                statement = bd.getConnection().prepareStatement(sql);
+
+	                statement.setString(1, usuario.getNome());
+	                statement.setString(2, usuario.getEmail());
+	                statement.setString(3, usuario.getSenhaHash());
+	                statement.setString(4, usuario.getSetor().name());
+
+	                if (usuario.getFuncao() != null) {
+	                    statement.setInt(5, usuario.getFuncao().getId());
+	                } else {
+	                    statement.setNull(5, Types.INTEGER);
+	                }
+
+	                statement.setInt(6, usuario.getId());
+
+	            } else {
+
+	                sql = "UPDATE usuario SET nome = ?, email = ?, setor = ?, id_funcao = ? WHERE id = ?";
+
+	                statement = bd.getConnection().prepareStatement(sql);
+
+	                statement.setString(1, usuario.getNome());
+	                statement.setString(2, usuario.getEmail());
+	                statement.setString(3, usuario.getSetor().name());
+
+	                if (usuario.getFuncao() != null) {
+	                    statement.setInt(4, usuario.getFuncao().getId());
+	                } else {
+	                    statement.setNull(4, Types.INTEGER);
+	                }
+
+	                statement.setInt(5, usuario.getId());
+	            }
 	        }
 	        else if (operacao == TipoOperacaoBD.EXCLUSAO) {
 
 	            sql = "DELETE FROM usuario WHERE id = ?";
 
-	            statement = bd.connection.prepareStatement(sql);
+	            statement = bd.getConnection().prepareStatement(sql);
 
 	            statement.setInt(1, usuario.getId());
 	        }
@@ -148,34 +143,20 @@ public class UsuarioDAO {
 	
 	public Usuario validarLogin(String email, String senha) {
 
-	    sql = "SELECT * FROM usuario WHERE email = ?";
+		sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.email = ?";
 
 	    try {
 
-	        statement = bd.connection.prepareStatement(sql);
+	        statement = bd.getConnection().prepareStatement(sql);
 	        statement.setString(1, email);
 
 	        resultSet = statement.executeQuery();
 
 	        if (resultSet.next()) {
 
-	        	Funcao funcao = new Funcao();
-	        	funcao.setId(resultSet.getInt("id_funcao"));
+	            Usuario usuario = carregarUsuario(resultSet);
 
-	        	FuncaoDAO funcaoDAO = new FuncaoDAO(funcao);
-	        	funcaoDAO.localizar();
-
-	        	Usuario usuario = new Usuario(
-	        	    resultSet.getInt("id"),
-	        	    resultSet.getString("nome"),
-	        	    resultSet.getString("email"),
-	        	    resultSet.getString("senha"),
-	        	    resultSet.getDate("data_cadastro"),
-	        	    Setor.valueOf(resultSet.getString("setor")),
-	        	    funcao
-	        	);
-
-	            String hashDigitado = usuario.string2Hash(senha);
+	            String hashDigitado = Usuario.string2Hash(senha);
 
 	            if (hashDigitado.equals(usuario.getSenhaHash())) {
 	                return usuario;
@@ -189,4 +170,42 @@ public class UsuarioDAO {
 	    return null;
 	}
 	
+	private Usuario carregarUsuario(ResultSet rs) throws SQLException {
+
+	    Funcao funcao = carregarFuncao(rs);
+
+	    return new Usuario(
+	        rs.getInt("id"),
+	        rs.getString("nome"),
+	        rs.getString("email"),
+	        rs.getString("senha"),
+	        rs.getDate("data_cadastro"),
+	        Setor.valueOf(rs.getString("setor")),
+	        funcao
+	    );
+	}
+	
+	private Funcao carregarFuncao(ResultSet rs) throws SQLException {
+		int idFuncao = rs.getInt("id_funcao");
+
+		if (rs.wasNull()) {
+			return null;
+		}
+	
+		Funcao funcao = new Funcao();
+
+		funcao.setId(idFuncao);
+		funcao.setNome(rs.getString("funcao_nome"));
+		
+		return funcao;
+	}
+	
+	private static final String SQL_USUARIO_COM_FUNCAO = """
+		    SELECT
+		        u.*,
+		        f.id_funcao AS funcao_id,
+		        f.nome AS funcao_nome
+		    FROM usuario u
+		    LEFT JOIN funcao f ON f.id_funcao = u.id_funcao
+		""";
 }

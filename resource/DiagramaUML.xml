@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Sistema de Tickets" id="sistema-tickets-uml">
-    <mxGraphModel dx="3433" dy="2193" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="1373" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -151,13 +151,13 @@
         <mxCell id="telaprincipal-methods" parent="telaprincipal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ GuiMenuPrincipal()&#xa;+ inicializarComponentes()&#xa;+ definirEventos()&#xa;+ montarMenu()&#xa;+ abrir()&#xa;+ logout()" vertex="1">
           <mxGeometry height="100" width="220" y="158" as="geometry" />
         </mxCell>
-        <mxCell id="telacadusuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroUsuario&lt;/font&gt;" vertex="1">
+        <mxCell id="telacadusuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroUsuario&lt;/font&gt;" vertex="1">
           <mxGeometry height="124" width="240" x="932" y="1203" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-attrs" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- comboFuncao: JComboBox&lt;Funcao&gt;&#xa;- comboSetor: JComboBox&lt;Setor&gt;" vertex="1">
           <mxGeometry height="44" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="telacadusuario-sep" parent="telacadusuario" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+        <mxCell id="telacadusuario-sep" parent="telacadusuario" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="70" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-methods" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ salvar()&#xa;+ cancelar()" vertex="1">
@@ -590,16 +590,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarUsuarios&lt;/font&gt;" vertex="1">
+        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarUsuarios&lt;/font&gt;" vertex="1">
           <mxGeometry height="130" width="240" x="938" y="1005" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
+        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
           <mxGeometry height="40" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="66" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
+        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
           <mxGeometry height="56" width="240" y="74" as="geometry" />
         </mxCell>
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-78" edge="1" parent="1" source="telalistusuarios-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.476;exitY=1.005;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;exitPerimeter=0;" target="telacadusuario">

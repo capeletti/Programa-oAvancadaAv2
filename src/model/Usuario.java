@@ -14,7 +14,7 @@ public class Usuario {
 	private Date dataCadastro;
 	private Setor setor;
 	private Funcao funcao;
-	
+
 	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor, Funcao funcao) {
 		super();
 		this.id = id;
@@ -28,9 +28,6 @@ public class Usuario {
 
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -48,7 +45,7 @@ public class Usuario {
 		return senhaHash;
 	}
 	public void setSenhaHash(String senha) {
-		this.senhaHash = this.string2Hash(senha);
+		this.senhaHash = Usuario.string2Hash(senha);
 	}
 	public Date getDataCadastro() {
 		return dataCadastro;
@@ -71,7 +68,7 @@ public class Usuario {
 		this.funcao = funcao;
 	}
 	
-    public String string2Hash(String texto) {
+    public static String string2Hash(String texto) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
@@ -90,6 +87,10 @@ public class Usuario {
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Erro ao gerar hash", e);
         }
+    }
+    
+    public boolean possuiSenha() {
+        return senhaHash != null && !senhaHash.isBlank();
     }
 	
 }
