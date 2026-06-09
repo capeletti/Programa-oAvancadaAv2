@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Sistema de Tickets" id="sistema-tickets-uml">
-    <mxGraphModel dx="4108" dy="2286" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
+    <mxGraphModel dx="1373" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="2200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,17 +10,17 @@
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-39" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="enum-setor">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#8D7600);fontColor=#000000;strokeColor=light-dark(#000000,#8D7600);fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Usuario&lt;/font&gt;" vertex="1">
-          <mxGeometry height="230" width="290" x="1518" y="1068" as="geometry" />
+        <mxCell id="usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Usuario&lt;/font&gt;" vertex="1">
+          <mxGeometry height="240" width="290" x="1518" y="1068" as="geometry" />
         </mxCell>
         <mxCell id="usuario-attrs" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- id: int&lt;br&gt;- nome: String&lt;br&gt;- email: String&lt;br&gt;- senhaHash: String&lt;br&gt;- dataCadastro: Date&lt;br&gt;- setor: Setor&lt;br&gt;- funcao: Funcao" vertex="1">
           <mxGeometry height="114" width="290" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="usuario-sep" parent="usuario" style="line;fillColor=light-dark(#F0A30A,#8D7600);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=light-dark(#000000,#8D7600);fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+        <mxCell id="usuario-sep" parent="usuario" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
           <mxGeometry height="8" width="290" y="140" as="geometry" />
         </mxCell>
-        <mxCell id="usuario-methods" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ getters/setters&#xa;+ setSenha(senha: String): boolean&#xa;- string2hash(valor: String): String&#xa;+ validarLogin(email: String, senha: String): boolean" vertex="1">
-          <mxGeometry height="82" width="290" y="148" as="geometry" />
+        <mxCell id="usuario-methods" parent="usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ Usuario(id: int, nome: String, email: String, senhaHash: String, dataCadastro: Date, setor: Setor, funcao: Funcao)&lt;div&gt;+ getters/setters&lt;br&gt;&lt;div&gt;+ string2Hash(texto: String) : String&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="92" width="290" y="148" as="geometry" />
         </mxCell>
         <mxCell id="funcao" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Funcao&lt;/font&gt;" vertex="1">
           <mxGeometry height="210" width="240" x="1543" y="1699" as="geometry" />
@@ -109,21 +109,21 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="457" y="1453" />
-              <mxPoint x="2062" y="1453" />
+              <mxPoint x="2102" y="1453" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="telalogin" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiLogin&lt;/font&gt;" vertex="1">
-          <mxGeometry height="100" width="220" x="292" y="1609" as="geometry" />
+        <mxCell id="telalogin" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiLogin&lt;/font&gt;" vertex="1">
+          <mxGeometry height="154" width="220" x="292" y="1609" as="geometry" />
         </mxCell>
-        <mxCell id="telalogin-attrs" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- campoEmail: JTextField&#xa;- campoSenha: JPasswordField" vertex="1">
-          <mxGeometry height="40" width="220" y="26" as="geometry" />
+        <mxCell id="telalogin-attrs" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- bd: BD&lt;br&gt;- contentPane: JPanel&lt;br&gt;- txtEmail: JTextField&lt;br&gt;- txtSenha: JPasswordField" vertex="1">
+          <mxGeometry height="64" width="220" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="telalogin-sep" parent="telalogin" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
-          <mxGeometry height="8" width="220" y="66" as="geometry" />
+        <mxCell id="telalogin-sep" parent="telalogin" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="90" as="geometry" />
         </mxCell>
-        <mxCell id="telalogin-methods" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ entrar()" vertex="1">
-          <mxGeometry height="26" width="220" y="74" as="geometry" />
+        <mxCell id="telalogin-methods" parent="telalogin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="&lt;div&gt;+ GuiLogin(bd:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;BD&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;)&lt;/span&gt;&lt;/div&gt;+ logar()&lt;div&gt;- inicializarComponentes()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="56" width="220" y="98" as="geometry" />
         </mxCell>
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-73" edge="1" parent="1" source="telaprincipal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="telalisttickets-methods">
           <mxGeometry relative="1" as="geometry" />
@@ -151,13 +151,13 @@
         <mxCell id="telaprincipal-methods" parent="telaprincipal" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ GuiMenuPrincipal()&#xa;+ inicializarComponentes()&#xa;+ definirEventos()&#xa;+ montarMenu()&#xa;+ abrir()&#xa;+ logout()" vertex="1">
           <mxGeometry height="100" width="220" y="158" as="geometry" />
         </mxCell>
-        <mxCell id="telacadusuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroUsuario&lt;/font&gt;" vertex="1">
+        <mxCell id="telacadusuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiCadastroUsuario&lt;/font&gt;" vertex="1">
           <mxGeometry height="124" width="240" x="932" y="1203" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-attrs" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- comboFuncao: JComboBox&lt;Funcao&gt;&#xa;- comboSetor: JComboBox&lt;Setor&gt;" vertex="1">
           <mxGeometry height="44" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="telacadusuario-sep" parent="telacadusuario" style="line;fillColor=light-dark(#F0A30A,#FFFFFF);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+        <mxCell id="telacadusuario-sep" parent="telacadusuario" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="70" as="geometry" />
         </mxCell>
         <mxCell id="telacadusuario-methods" parent="telacadusuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ salvar()&#xa;+ cancelar()" vertex="1">
@@ -224,7 +224,7 @@
         <mxCell id="enum-prioridade" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Prioridade&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;BAIXA&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;MEDIA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;ALTA&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;URGENTE&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="120" width="180" x="1573" y="123" as="geometry" />
         </mxCell>
-        <mxCell id="enum-setor" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Setor&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;ADMINISTRAÇÃO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;COMERCIAL&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;COMPRAS&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;FINANCEIRO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;MARKETING&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;PRODUÇÃO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;RH&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;TI&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
+        <mxCell id="enum-setor" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin: 4px 0px 0px;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Setor&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;&quot;&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;ADMINISTRACAO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;COMERCIAL&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;COMPRAS&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;FINANCEIRO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;MARKETING&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;PRODUCAO&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;RH&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;TI&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
           <mxGeometry height="167" width="180" x="1270" y="778" as="geometry" />
         </mxCell>
         <mxCell id="enum-permissao" parent="1" style="verticalAlign=top;align=center;overflow=fill;html=1;whiteSpace=wrap;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontStyle=1;horizontal=1;" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;Permissao&lt;/b&gt;&lt;/font&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;ABRIR_TICKET&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;RESPONDER_TICKET&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;FECHAR_TICKET&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;CADASTRAR_USUARIO&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0)); background-color: transparent;&quot;&gt;CADASTRAR_FUNCAO&lt;/span&gt;&lt;/div&gt;&lt;/font&gt;&lt;p&gt;&lt;/p&gt;" vertex="1">
@@ -287,17 +287,17 @@
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-8" parent="RSQRT4FTKDlNVl4S_yjf-1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#000000;fontStyle=1" value="&lt;font style=&quot;font-size: 31px;&quot;&gt;Informativo&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="207.5" x="61.25" y="11" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#F0A30A,#FFFFFF);fontColor=#000000;strokeColor=default;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;UsuarioDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
-          <mxGeometry height="170" width="290" x="1918" y="1098" as="geometry" />
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-9" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;UsuarioDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="210" width="370" x="1918" y="1098" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-10" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- usuario: Usuario&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- statement: PreparedStatement&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- resultSet: ResultSet&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- sql: String&lt;/span&gt;&lt;/font&gt;" vertex="1">
-          <mxGeometry height="74" width="290" y="26" as="geometry" />
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-10" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- bd: BD&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- statement: PreparedStatement&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- resultSet: ResultSet&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;- sql: String&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="74" width="370" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-11" parent="RSQRT4FTKDlNVl4S_yjf-9" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="290" y="100" as="geometry" />
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-11" parent="RSQRT4FTKDlNVl4S_yjf-9" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+          <mxGeometry height="8" width="370" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="RSQRT4FTKDlNVl4S_yjf-12" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ localizar(id: int) : boolean&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ atualizar(operacao: TipoOperacaoBD) : String&lt;/span&gt;&lt;br style=&quot;font-weight: 700;&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ buscarPorEmail(email: String) : Usuario&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="62" width="290" y="108" as="geometry" />
+        <mxCell id="RSQRT4FTKDlNVl4S_yjf-12" parent="RSQRT4FTKDlNVl4S_yjf-9" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ UsuarioDAO()&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ setBD(&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font style=&quot;color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;bd: BD&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); background-color: transparent;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ localizar(bd: BD) : Usuario&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ listar() : ArrayList&amp;lt;Usuario&amp;gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ atualizar(usuario: Usuario, operacao TipoOperacao) : String&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-weight: 700;&quot;&gt;+ validarLogin(email: String, senha: String) : Usuario&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="102" width="370" y="108" as="geometry" />
         </mxCell>
         <mxCell id="RSQRT4FTKDlNVl4S_yjf-13" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;swimlaneLine=1;fontFamily=Helvetica;fontSize=12;" value="&lt;span&gt;&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;FuncaoDAO&lt;/font&gt;&lt;/span&gt;" vertex="1">
           <mxGeometry height="250" width="290" x="1918" y="1590" as="geometry" />
@@ -377,7 +377,7 @@
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-28" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;strokeWidth=2;" target="telalogin-attrs">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="175" y="1655" />
+              <mxPoint x="175" y="1667" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -472,7 +472,7 @@
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-61" edge="1" parent="1" source="RSQRT4FTKDlNVl4S_yjf-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=block;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="basedao-methods">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="2772" y="1237" />
+              <mxPoint x="2772" y="1257" />
               <mxPoint x="2772" y="1043" />
               <mxPoint x="2822" y="1043" />
             </Array>
@@ -550,8 +550,9 @@
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-82" edge="1" parent="1" source="telacadusuario-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-methods">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
+              <mxPoint x="1172" y="1249" />
               <mxPoint x="1342" y="1249" />
-              <mxPoint x="1342" y="1257" />
+              <mxPoint x="1342" y="1262" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -563,7 +564,7 @@
             <Array as="points">
               <mxPoint x="1262" y="1107" />
               <mxPoint x="1262" y="1513" />
-              <mxPoint x="2062" y="1513" />
+              <mxPoint x="2102" y="1513" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -572,7 +573,7 @@
             <Array as="points">
               <mxPoint x="1262" y="1294" />
               <mxPoint x="1262" y="1513" />
-              <mxPoint x="2062" y="1513" />
+              <mxPoint x="2102" y="1513" />
             </Array>
             <mxPoint x="1172" y="1294.5" as="sourcePoint" />
             <mxPoint x="2062" y="1293" as="targetPoint" />
@@ -589,16 +590,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarUsuarios&lt;/font&gt;" vertex="1">
+        <mxCell id="telalistusuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;GuiListarUsuarios&lt;/font&gt;" vertex="1">
           <mxGeometry height="130" width="240" x="938" y="1005" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
+        <mxCell id="telalistusuarios-attrs" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- tabelaUsuarios: JTable&#xa;- usuarioLogado: Usuario" vertex="1">
           <mxGeometry height="40" width="240" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
+        <mxCell id="telalistusuarios-sep" parent="telalistusuarios" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
           <mxGeometry height="8" width="240" y="66" as="geometry" />
         </mxCell>
-        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
+        <mxCell id="telalistusuarios-methods" parent="telalistusuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="+ atualizarLista()&#xa;+ abrirCadastro()&#xa;+ editarUsuario()" vertex="1">
           <mxGeometry height="56" width="240" y="74" as="geometry" />
         </mxCell>
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-78" edge="1" parent="1" source="telalistusuarios-methods" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.476;exitY=1.005;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;exitPerimeter=0;" target="telacadusuario">
@@ -631,11 +632,9 @@
         <mxCell id="Pqx6_gMtB0x2yJiwBSkp-91" edge="1" parent="1" source="telalistfuncoes-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.002;entryY=0.279;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;entryPerimeter=0;" target="funcao-methods">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1150" y="2020" />
-              <mxPoint x="1362" y="2020" />
-              <mxPoint x="1362" y="1821" />
-              <mxPoint x="1480" y="1821" />
-              <mxPoint x="1480" y="1820" />
+              <mxPoint x="1362" y="2063" />
+              <mxPoint x="1362" y="1828" />
+              <mxPoint x="1543" y="1828" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -686,8 +685,8 @@
         <mxCell id="FvpgfYNPFZ7KdVLirFTl-4" edge="1" parent="1" source="telalistfuncoes-attrs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="usuario-attrs">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="910" y="2006" />
-              <mxPoint x="910" y="1620" />
+              <mxPoint x="890" y="2063" />
+              <mxPoint x="890" y="1620" />
               <mxPoint x="1430" y="1620" />
               <mxPoint x="1430" y="1151" />
             </Array>
@@ -719,6 +718,21 @@
         </mxCell>
         <mxCell id="AKm7Sn_3u7KZ5ZsDyplM-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Text" vertex="1">
           <mxGeometry height="30" width="60" x="1910" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="hB44-xXdRo6bjVNDBxil-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;BancoSetup&lt;/font&gt;" vertex="1">
+          <mxGeometry height="130" width="240" x="360" y="1963" as="geometry" />
+        </mxCell>
+        <mxCell id="hB44-xXdRo6bjVNDBxil-2" parent="hB44-xXdRo6bjVNDBxil-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="- connection: Connection" vertex="1">
+          <mxGeometry height="24" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="hB44-xXdRo6bjVNDBxil-3" parent="hB44-xXdRo6bjVNDBxil-1" style="line;fillColor=light-dark(#60A917,#4A890C);align=center;verticalAlign=top;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hB44-xXdRo6bjVNDBxil-4" parent="hB44-xXdRo6bjVNDBxil-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#000000;fontStyle=1;horizontal=1;" value="&lt;div&gt;+ BancoSetup(connection:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;Connection&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ inicializar()&lt;/div&gt;&lt;div&gt;- CriarTabelas()&lt;/div&gt;&lt;div&gt;- inserirRegistroUsuario()&lt;/div&gt;" vertex="1">
+          <mxGeometry height="72" width="240" y="58" as="geometry" />
+        </mxCell>
+        <mxCell id="hB44-xXdRo6bjVNDBxil-5" edge="1" parent="1" source="hB44-xXdRo6bjVNDBxil-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;strokeColor=default;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;startSize=15;endArrow=open;endFill=0;endSize=15;sourcePerimeterSpacing=0;" target="RSQRT4FTKDlNVl4S_yjf-30">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -14,8 +14,8 @@ public class Usuario {
 	private Date dataCadastro;
 	private Setor setor;
 	private Funcao funcao;
-	
-	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor) {
+
+	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor, Funcao funcao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -23,13 +23,11 @@ public class Usuario {
 		this.senhaHash = senhaHash;
 		this.dataCadastro = dataCadastro;
 		this.setor = setor;
+		this.funcao = funcao;
 	}
 
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -46,8 +44,8 @@ public class Usuario {
 	public String getSenhaHash() {
 		return senhaHash;
 	}
-	public void setSenhaHash(String senhaHash) {
-		this.senhaHash = this.string2Hash(senhaHash);
+	public void setSenhaHash(String senha) {
+		this.senhaHash = Usuario.string2Hash(senha);
 	}
 	public Date getDataCadastro() {
 		return dataCadastro;
@@ -70,7 +68,7 @@ public class Usuario {
 		this.funcao = funcao;
 	}
 	
-    public String string2Hash(String texto) {
+    public static String string2Hash(String texto) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
 
@@ -90,8 +88,9 @@ public class Usuario {
             throw new RuntimeException("Erro ao gerar hash", e);
         }
     }
+    
+    public boolean possuiSenha() {
+        return senhaHash != null && !senhaHash.isBlank();
+    }
 	
-	public boolean validaLogin (String email, String senha) {
-		return true;
-	}
 }
