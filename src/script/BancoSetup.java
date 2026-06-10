@@ -61,9 +61,32 @@ public class BancoSetup {
     	    	REFERENCES funcao(id_funcao)
         	)
         """;
+        
+        String sqlTicket = """
+        	    CREATE TABLE IF NOT EXISTS ticket (
+        	        id INT AUTO_INCREMENT PRIMARY KEY,
+        	        titulo VARCHAR(200) NOT NULL,
+        	        descricao TEXT NOT NULL,
+        	        setor_destino VARCHAR(50) NOT NULL,
+        	        status VARCHAR(50) NOT NULL,
+        	        prioridade VARCHAR(50) NOT NULL,
+        	        categoria VARCHAR(50) NOT NULL,
+        	        data_abertura DATE NOT NULL,
+        	        data_fechamento DATE,
+        	        id_criado_por INT NOT NULL,
+        	        id_respondido_por INT,
+
+        	        FOREIGN KEY (id_criado_por)
+        	        REFERENCES usuario(id),
+
+        	        FOREIGN KEY (id_respondido_por)
+        	        REFERENCES usuario(id)
+        	    )
+        	""";
 
         PreparedStatement statement;
 
+        
         statement = connection.prepareStatement(sqlFuncao);
         statement.execute();
         statement.close();
@@ -75,7 +98,12 @@ public class BancoSetup {
         statement = connection.prepareStatement(sqlUsuario);
         statement.execute();
         statement.close();
+   
+        statement = connection.prepareStatement(sqlTicket);
+        statement.execute();
+        statement.close();
     }
+    
 
     private void inserirRegistroUsuario() throws SQLException {
 
