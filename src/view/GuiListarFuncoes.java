@@ -83,27 +83,37 @@ public class GuiListarFuncoes extends JFrame {
 
 		scrollPane.setViewportView(table);
 
-		JButton btnAtualizar = new JButton("ATUALIZAR LISTA");
-		btnAtualizar.setBounds(20, 330, 160, 35);
-		contentPane.add(btnAtualizar);
+		JButton btnNovo = new JButton("NOVA FUNÇÃO");
+		btnNovo.setBounds(20, 330, 160, 35);
+		contentPane.add(btnNovo);
 
 		JButton btnEditar = new JButton("EDITAR");
-		btnEditar.setBounds(312, 330, 160, 35);
+		btnEditar.setBounds(214, 330, 160, 35);
 		contentPane.add(btnEditar);
+
+		JButton btnAtualizar = new JButton("ATUALIZAR LISTA");
+		btnAtualizar.setBounds(408, 330, 160, 35);
+		contentPane.add(btnAtualizar);
 
 		JButton btnFechar = new JButton("FECHAR");
 		btnFechar.setBounds(604, 330, 160, 35);
 		contentPane.add(btnFechar);
 
-		btnAtualizar.addActionListener(new ActionListener() {
+		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				atualizarLista();
+				abrirCadastro();
 			}
 		});
 
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				editarFuncao();
+			}
+		});
+
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				atualizarLista();
 			}
 		});
 
