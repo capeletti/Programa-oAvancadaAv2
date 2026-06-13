@@ -18,6 +18,7 @@ import model.Funcao;
 import model.FuncaoDAO;
 import model.Permissao;
 import model.TipoOperacaoBD;
+import model.Usuario;
 
 public class GuiCadastroFuncao extends JFrame {
 
@@ -25,6 +26,7 @@ public class GuiCadastroFuncao extends JFrame {
 	private JPanel contentPane;
 
 	private int idFuncao;
+	private Usuario usuarioLogado;
 	private TextField textFieldNomeFuncao;
 	private JCheckBox chckbxAtivo;
 	private JCheckBox chckbxAbrirTicket;
@@ -42,7 +44,7 @@ public class GuiCadastroFuncao extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GuiCadastroFuncao frame = new GuiCadastroFuncao();
+					GuiCadastroFuncao frame = new GuiCadastroFuncao(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,14 +53,16 @@ public class GuiCadastroFuncao extends JFrame {
 		});
 	}
 
-	// Construtor para criar a função
-	public GuiCadastroFuncao() {
+	 // Construtor para nova função
+	public GuiCadastroFuncao(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 		idFuncao = 0;
 		inicializarComponentes();
 	}
 
-	// Construtor para editar a função
-	public GuiCadastroFuncao(Funcao funcao) {
+	// Construtor para editar função existente
+	public GuiCadastroFuncao(Usuario usuarioLogado, Funcao funcao) {
+		this.usuarioLogado = usuarioLogado;
 		idFuncao = funcao.getId();
 		inicializarComponentes();
 
@@ -162,6 +166,11 @@ public class GuiCadastroFuncao extends JFrame {
 	}
 
 	public void salvar() {
+		if (usuarioLogado == null || usuarioLogado.getFuncao() == null
+				|| !usuarioLogado.getFuncao().temPermissao(Permissao.CADASTRAR_FUNCAO)) {
+			JOptionPane.showMessageDialog(null, "Sem permissão para cadastrar funções.");
+			return;
+		}
 		if (textFieldNomeFuncao.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Informe o nome da função.");
 			return;

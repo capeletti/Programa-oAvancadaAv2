@@ -164,7 +164,7 @@ public class GuiListarFuncoes extends JFrame {
 	}
 
 	public void abrirCadastro() {
-		GuiCadastroFuncao cadastro = new GuiCadastroFuncao();
+		GuiCadastroFuncao cadastro = new GuiCadastroFuncao(usuarioLogado);
 		cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		cadastro.setVisible(true);
 	}
@@ -185,7 +185,7 @@ public class GuiListarFuncoes extends JFrame {
 		FuncaoDAO dao = new FuncaoDAO(funcao);
 
 		if (dao.localizar(idFuncao)) {
-			GuiCadastroFuncao cadastro = new GuiCadastroFuncao(funcao);
+			GuiCadastroFuncao cadastro = new GuiCadastroFuncao(usuarioLogado, funcao);
 			cadastro.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			cadastro.setVisible(true);
 		} else {
