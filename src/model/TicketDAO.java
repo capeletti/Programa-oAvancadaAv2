@@ -3,6 +3,7 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class TicketDAO implements OperacaoBD {
 
@@ -16,7 +17,7 @@ public class TicketDAO implements OperacaoBD {
 		this.ticket = ticket;
 	}
 
-	
+
 	@Override
 	public boolean localizar() {
 		BD bd = new BD();
@@ -29,29 +30,7 @@ public class TicketDAO implements OperacaoBD {
 			resultSet = statement.executeQuery();
 
 			if (resultSet.next()) {
-				ticket.setId(resultSet.getInt("id"));
-				ticket.setTitulo(resultSet.getString("titulo"));
-				ticket.setDescricao(resultSet.getString("descricao"));
-				ticket.setSetorDestino(Setor.valueOf(resultSet.getString("setor_destino")));
-				ticket.setStatus(Status.valueOf(resultSet.getString("status")));
-				ticket.setPrioridade(Prioridade.valueOf(resultSet.getString("prioridade")));
-				ticket.setCategoria(Categoria.valueOf(resultSet.getString("categoria")));
-				ticket.setDataAbertura(resultSet.getDate("data_abertura"));
-				ticket.setDataFechamento(resultSet.getDate("data_fechamento"));
-
-				ticket.setCriadoPor(new Usuario(
-					resultSet.getInt("id_criado_por"),
-					null, null, null, null, null, null
-				));
-
-				int idRespondido = resultSet.getInt("id_respondido_por");
-				if (!resultSet.wasNull()) {
-					ticket.setRespondidoPor(new Usuario(
-						idRespondido,
-						null, null, null, null, null, null
-					));
-				}
-
+				carregarTicket(ticket, resultSet);
 				return true;
 			}
 			return false;
@@ -111,6 +90,113 @@ public class TicketDAO implements OperacaoBD {
 		}
 	}
 
+	public ArrayList<Ticket> listarTodos() {
+		ArrayList<Ticket> lista = new ArrayList<>();
+		BD bd = new BD();
+		if (!bd.connect()) return lista;
+
+		try {
+			sql = "SELECT * FROM ticket ORDER BY data_abertura DESC";
+			statement = bd.getConnection().prepareStatement(sql);
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				Ticket t = new Ticket();
+				carregarTicket(t, resultSet);
+				lista.add(t);
+			}
+
+		} catch (SQLException erro) {
+			System.out.println("Erro ao listar Tickets: " + erro.getMessage());
+		} finally {
+			bd.close();
+		}
+
+		return lista;
+	}
+
+	public ArrayList<Ticket> listarPorSetor(Setor setor) {
+		ArrayList<Ticket> lista = new ArrayList<>();
+		BD bd = new BD();
+		if (!bd.connect()) return lista;
+
+		try {
+			sql = "SELECT * FROM ticket WHERE setor_destino = ? "
+			    + "ORDER BY FIELD(status, 'ABERTO', 'EM_ANDAMENTO', 'FECHADO'), "
+			    + "FIELD(prioridade, 'URGENTE', 'ALTA', 'MEDIA', 'BAIXA'), data_abertura ASC";
+			statement = bd.getConnection().prepareStatement(sql);
+			statement.setString(1, setor.name());
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				Ticket t = new Ticket();
+				carregarTicket(t, resultSet);
+				lista.add(t);
+			}
+
+		} catch (SQLException erro) {
+			System.out.println("Erro ao listar Tickets por setor: " + erro.getMessage());
+		} finally {
+			bd.close();
+		}
+
+		return lista;
+	}
+
+	public Ticket proximoDaFila(Setor setor) {
+		BD bd = new BD();
+		if (!bd.connect()) return null;
+
+		try {
+			sql = "SELECT * FROM ticket "
+			    + "WHERE setor_destino = ? AND status = ? "
+			    + "ORDER BY FIELD(prioridade, 'URGENTE', 'ALTA', 'MEDIA', 'BAIXA'), data_abertura ASC "
+			    + "LIMIT 1";
+			statement = bd.getConnection().prepareStatement(sql);
+			statement.setString(1, setor.name());
+			statement.setString(2, Status.ABERTO.name());
+			resultSet = statement.executeQuery();
+
+			if (resultSet.next()) {
+				Ticket t = new Ticket();
+				carregarTicket(t, resultSet);
+				return t;
+			}
+			return null;
+
+		} catch (SQLException erro) {
+			System.out.println("Erro ao buscar proximo da fila: " + erro.getMessage());
+			return null;
+		} finally {
+			bd.close();
+		}
+	}
+
+	private void carregarTicket(Ticket t, ResultSet rs) throws SQLException {
+		t.setId(rs.getInt("id"));
+		t.setTitulo(rs.getString("titulo"));
+		t.setDescricao(rs.getString("descricao"));
+		t.setSetorDestino(Setor.valueOf(rs.getString("setor_destino")));
+		t.setStatus(Status.valueOf(rs.getString("status")));
+		t.setPrioridade(Prioridade.valueOf(rs.getString("prioridade")));
+		t.setCategoria(Categoria.valueOf(rs.getString("categoria")));
+		t.setDataAbertura(rs.getDate("data_abertura"));
+		t.setDataFechamento(rs.getDate("data_fechamento"));
+
+		t.setCriadoPor(new Usuario(
+			rs.getInt("id_criado_por"),
+			null, null, null, null, null, null
+		));
+
+		int idRespondido = rs.getInt("id_respondido_por");
+		if (!rs.wasNull()) {
+			t.setRespondidoPor(new Usuario(
+				idRespondido,
+				null, null, null, null, null, null
+			));
+		}
+	}
+
 	private void prepararCampos() throws SQLException {
 		statement.setString(1, ticket.getTitulo());
 		statement.setString(2, ticket.getDescricao());
@@ -134,56 +220,4 @@ public class TicketDAO implements OperacaoBD {
 			statement.setNull(10, java.sql.Types.INTEGER);
 		}
 	}
-	public Ticket proximoDaFila(Setor setor) {
-		BD bd = new BD();
-		if (!bd.connect()) return null;
-
-		try {
-			sql = "SELECT * FROM ticket "
-			    + "WHERE setor_destino = ? AND status = ? "
-			    + "ORDER BY FIELD(prioridade, 'URGENTE', 'ALTA', 'MEDIA', 'BAIXA'), data_abertura ASC "
-			    + "LIMIT 1";
-			statement = bd.getConnection().prepareStatement(sql);
-			statement.setString(1, setor.name());
-			statement.setString(2, Status.ABERTO.name());
-			resultSet = statement.executeQuery();
-
-			if (resultSet.next()) {
-				Ticket t = new Ticket();
-				t.setId(resultSet.getInt("id"));
-				t.setTitulo(resultSet.getString("titulo"));
-				t.setDescricao(resultSet.getString("descricao"));
-				t.setSetorDestino(Setor.valueOf(resultSet.getString("setor_destino")));
-				t.setStatus(Status.valueOf(resultSet.getString("status")));
-				t.setPrioridade(Prioridade.valueOf(resultSet.getString("prioridade")));
-				t.setCategoria(Categoria.valueOf(resultSet.getString("categoria")));
-				t.setDataAbertura(resultSet.getDate("data_abertura"));
-				t.setDataFechamento(resultSet.getDate("data_fechamento"));
-
-				t.setCriadoPor(new Usuario(
-					resultSet.getInt("id_criado_por"),
-					null, null, null, null, null, null
-				));
-
-				int idRespondido = resultSet.getInt("id_respondido_por");
-				if (!resultSet.wasNull()) {
-					t.setRespondidoPor(new Usuario(
-						idRespondido,
-						null, null, null, null, null, null
-					));
-				}
-
-				return t;
-			}
-			return null;
-
-		} catch (SQLException erro) {
-			System.out.println("Erro ao buscar proximo da fila: " + erro.getMessage());
-			return null;
-		} finally {
-			bd.close();
-		}
-	}
-
-	
 }
