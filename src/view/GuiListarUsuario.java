@@ -29,34 +29,41 @@ public class GuiListarUsuario extends JFrame {
 	private JButton btnAdicionar;
 	private JButton btnVoltar;
 	private BD bd;
+	private Usuario usuarioLogado;
 
-	public GuiListarUsuario(BD bd) {
+	public GuiListarUsuario(BD bd, Usuario usuarioLogado) {
 		this.bd = bd;
+		this.usuarioLogado = usuarioLogado;
 		inicializarComponentes();
 	}
-	
+
 	private void inicializarComponentes() {
 		setTitle("Usuario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 810, 380);
 		setLocationRelativeTo(null);
-		
-		
+
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-	
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(27, 50, 744, 280);
-		contentPane.add(scrollPane);		
+		scrollPane.setBounds(27,50,744,280);
+		contentPane.add(scrollPane);
 
 		modeloTabela = new DefaultTableModel(
 			new Object[][] {},
-			new String[] { "ID", "Nome", "E-mail", "Setor", "Fun\u00E7\u00E3o", "Data cria\u00E7\u00E3o" }
+			new String[] {
+				"ID",
+				"Nome",
+				"E-mail",
+				"Setor",
+				"Função",
+				"Data criação"
+			}
 		) {
 			private static final long serialVersionUID = 1L;
-
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
@@ -66,12 +73,14 @@ public class GuiListarUsuario extends JFrame {
 		table.addMouseListener(new java.awt.event.MouseAdapter() {
 			@Override
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				if (e.getClickCount() == 2) {
+				if(e.getClickCount() == 2) {
 					editarUsuarioSelecionado();
-			    }
+				}
 			}
 		});
+
 		DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+
 		centralizado.setHorizontalAlignment(SwingConstants.CENTER);
 
 		table.getColumnModel().getColumn(1).setPreferredWidth(300);
@@ -81,22 +90,20 @@ public class GuiListarUsuario extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(150);
 		table.getColumnModel().getColumn(5).setPreferredWidth(120);
 		table.getColumnModel().getColumn(5).setCellRenderer(centralizado);
-
 		scrollPane.setViewportView(table);
-		
+
+
 		btnAdicionar = new JButton("Adicionar");
-		btnAdicionar.setToolTipText("Adicionar");
-		btnAdicionar.setBounds(664, 10, 107, 30);
+		btnAdicionar.setBounds(664,10,107,30);
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				adicionar();
 			}
 		});
 		contentPane.add(btnAdicionar);
-		
+
 		btnVoltar = new JButton("Voltar");
-		btnVoltar.setToolTipText("Voltar");
-		btnVoltar.setBounds(27, 10, 107, 30);
+		btnVoltar.setBounds(27,10,107,30);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				voltar();
@@ -106,59 +113,65 @@ public class GuiListarUsuario extends JFrame {
 
 		obterDados();
 	}
-	
+
 	private void adicionar() {
-        dispose();
-        GuiCadastroUsuario tela = new GuiCadastroUsuario(this.bd);
-        tela.setVisible(true);
+		dispose();
+		GuiCadastroUsuario tela = new GuiCadastroUsuario(this.bd, this.usuarioLogado);
+		tela.setVisible(true);
 	}
-	
+
 	private void voltar() {
-	    dispose();
-	    GuiLogin tela = new GuiLogin(bd);
-	    tela.setVisible(true);
+		dispose();
+		GuiMenuPrincipal tela = new GuiMenuPrincipal(this.bd, this.usuarioLogado);
+		tela.setVisible(true);
 	}
-	
+
 	private void obterDados() {
 		try {
-			UsuarioDAO dao = new UsuarioDAO(this.bd);
+
+			Usuario usuarioBase = new Usuario();
+			UsuarioDAO dao = new UsuarioDAO(usuarioBase);
 			ArrayList<Usuario> lista = dao.listar();
 			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
 			modeloTabela.setRowCount(0);
 
-			for (int i = 0; i < lista.size(); i++) {
-				Usuario usuario = lista.get(i);
+			for(Usuario usuario : lista) {
 
-				modeloTabela.addRow(new Object[] {
-					usuario.getId(),
-					usuario.getNome(),
-					usuario.getEmail(),
-				    usuario.getSetor() != null ? usuario.getSetor().getDescricao() : "",
-					usuario.getFuncao() != null ? usuario.getFuncao().getNome() : "",
-					formato.format(usuario.getDataCadastro())
-				});
+				modeloTabela.addRow(
+					new Object[] {
+						usuario.getId(),
+						usuario.getNome(),
+						usuario.getEmail(),
+						usuario.getSetor() != null ? usuario.getSetor().getDescricao() : "",
+						usuario.getFuncao() != null ? usuario.getFuncao().getNome() : "",
+						usuario.getDataCadastro() != null ? formato.format(usuario.getDataCadastro()) : ""
+					}
+				);
 			}
-		} catch (Exception erro) {
+		} catch(Exception erro) {
 			JOptionPane.showMessageDialog(null, "Erro ao atualizar a tabela: " + erro.getMessage());
 		}
 	}
-	
+
 	private void editarUsuarioSelecionado() {
+
 		int linha = table.rowAtPoint(table.getMousePosition());
 
-	    if (linha < 0) {
-	        return;
-	    }
+		if(linha < 0) {
+			return;
+		}
 
-	    int idUsuario = (Integer) modeloTabela.getValueAt(linha, 0);
-	    UsuarioDAO dao = new UsuarioDAO(bd);
-	    Usuario usuario = dao.localizar(idUsuario);
+		int idUsuario = (Integer) modeloTabela.getValueAt(linha,0);
+		Usuario usuario = new Usuario();
+		usuario.setId(idUsuario);
 
-	    if (usuario != null) {
-	        dispose();
-	        GuiCadastroUsuario tela = new GuiCadastroUsuario(bd, usuario);
-	        tela.setVisible(true);
-	    }
+		UsuarioDAO dao = new UsuarioDAO(usuario);
+
+		if(dao.localizar()) {
+			dispose();
+			GuiCadastroUsuario tela = new GuiCadastroUsuario(this.bd, this.usuarioLogado, usuario);
+			tela.setVisible(true);
+		}
 	}
 }

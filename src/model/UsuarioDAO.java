@@ -3,209 +3,193 @@ package model;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class UsuarioDAO {
-	private BD bd;
-	
+public class UsuarioDAO implements OperacaoBD {
+	private Usuario usuario;
 	private PreparedStatement statement;
 	private ResultSet resultSet;
-	
 	private String sql;
 	
-	public UsuarioDAO(BD bd) {
-		this.bd = bd;
+	public UsuarioDAO(Usuario usuario) {
+	    this.usuario = usuario;
 	}
 	
-	public Usuario localizar(int id) {
+	@Override
+	public boolean localizar() {
 
-		sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.id = ?";
+	    BD bd = new BD();
 
-	    try {
-
-	        statement = bd.getConnection().prepareStatement(sql);
-	        statement.setInt(1, id);
-
-	        resultSet = statement.executeQuery();
-
-	        if (resultSet.next()) {
-	            return carregarUsuario(resultSet);
-	        }
-
-	    } catch (SQLException erro) {
-	        erro.printStackTrace();
+	    if (!bd.connect()) {
+	        return false;
 	    }
 
-	    return null;
+	    try {
+	        sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.id = ?";
+	        statement = bd.getConnection().prepareStatement(sql);
+	        statement.setInt(1, usuario.getId());
+	        resultSet = statement.executeQuery();
+	        if (resultSet.next()) {
+	            carregarUsuario(usuario, resultSet);
+	            return true;
+	        }
+	        return false;
+	        
+	    } catch (SQLException erro) {
+	        System.out.println("Erro ao localizar Usuario: " + erro.getMessage());
+	        return false;
+	    } finally {
+	        bd.close();
+	    }
 	}
 	
 	public ArrayList<Usuario> listar() {
+
 	    ArrayList<Usuario> lista = new ArrayList<>();
-	    sql = SQL_USUARIO_COM_FUNCAO;
+
+	    BD bd = new BD();
+
+	    if (!bd.connect()) {
+	        return lista;
+	    }
 
 	    try {
-
+	        sql = SQL_USUARIO_COM_FUNCAO;
 	        statement = bd.getConnection().prepareStatement(sql);
-
 	        resultSet = statement.executeQuery();
 
 	        while (resultSet.next()) {
-	            lista.add(carregarUsuario(resultSet));
-	        }
-
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-
-	    return lista;
-	}
-		
-	public String atualizar(Usuario usuario, TipoOperacaoBD operacao) {
-
-	    String msg = "Operação realizada com sucesso!";
-
-	    try {
-
-	        if (operacao == TipoOperacaoBD.INCLUSAO) {
-
-	        	sql = "INSERT INTO usuario (nome, email, senha, data_cadastro, setor, id_funcao) VALUES (?, ?, ?, ?, ?, ?)";
-
-	            statement = bd.getConnection().prepareStatement(sql);
-
-	            statement.setString(1, usuario.getNome());
-	            statement.setString(2, usuario.getEmail());
-	            statement.setString(3, usuario.getSenhaHash());
-	            statement.setDate(4, new java.sql.Date(usuario.getDataCadastro().getTime()));
-	            statement.setString(5, usuario.getSetor().name());
-	            if (usuario.getFuncao() != null) {
-	                statement.setInt(6, usuario.getFuncao().getId());
-	            } else {
-	                statement.setNull(6, Types.INTEGER);
-	            }
-	        }
-	        else if (operacao == TipoOperacaoBD.ALTERACAO) {
-
-	            if (usuario.possuiSenha()) {
-
-	            	sql = "UPDATE usuario SET nome = ?, email = ?, senha = ?, setor = ?, id_funcao = ? WHERE id = ?";
-
-	                statement = bd.getConnection().prepareStatement(sql);
-
-	                statement.setString(1, usuario.getNome());
-	                statement.setString(2, usuario.getEmail());
-	                statement.setString(3, usuario.getSenhaHash());
-	                statement.setString(4, usuario.getSetor().name());
-
-	                if (usuario.getFuncao() != null) {
-	                    statement.setInt(5, usuario.getFuncao().getId());
-	                } else {
-	                    statement.setNull(5, Types.INTEGER);
-	                }
-
-	                statement.setInt(6, usuario.getId());
-
-	            } else {
-
-	                sql = "UPDATE usuario SET nome = ?, email = ?, setor = ?, id_funcao = ? WHERE id = ?";
-
-	                statement = bd.getConnection().prepareStatement(sql);
-
-	                statement.setString(1, usuario.getNome());
-	                statement.setString(2, usuario.getEmail());
-	                statement.setString(3, usuario.getSetor().name());
-
-	                if (usuario.getFuncao() != null) {
-	                    statement.setInt(4, usuario.getFuncao().getId());
-	                } else {
-	                    statement.setNull(4, Types.INTEGER);
-	                }
-
-	                statement.setInt(5, usuario.getId());
-	            }
-	        }
-	        else if (operacao == TipoOperacaoBD.EXCLUSAO) {
-
-	            sql = "DELETE FROM usuario WHERE id = ?";
-
-	            statement = bd.getConnection().prepareStatement(sql);
-
-	            statement.setInt(1, usuario.getId());
-	        }
-
-	        if (statement.executeUpdate() == 0) {
-	            msg = "Falha na operação!";
+	            Usuario u = new Usuario();
+	            carregarUsuario(u, resultSet);
+	            lista.add(u);
 	        }
 
 	    } catch (SQLException erro) {
-	        msg = "Falha na operação - " + erro.getMessage();
+	        System.out.println("Erro ao listar Usuarios: " + erro.getMessage());
+	    } finally {
+	        bd.close();
+	    }
+	    return lista;
+	}
+		
+	@Override
+	public String atualizar(TipoOperacaoBD operacao) {
+
+	    BD bd = new BD();
+
+	    if (!bd.connect()) {
+	        return "Erro: falha ao conectar ao banco.";
 	    }
 
-	    return msg;
+	    try {
+	        switch (operacao) {
+	            case INCLUSAO:
+	            	
+	                sql = "INSERT INTO usuario "
+	                    + "(nome, email, senha, data_cadastro, setor, id_funcao) "
+	                    + "VALUES (?, ?, ?, ?, ?, ?)";
+	                statement = bd.getConnection().prepareStatement(sql);
+	                prepararCampos();
+	                statement.executeUpdate();
+	                return "Usuario incluido com sucesso.";
+
+	            case ALTERACAO:
+	            	
+	                if(usuario.possuiSenha()) {
+	                    sql = "UPDATE usuario SET nome=?, email=?, senha=?, setor=?, id_funcao=? WHERE id=?";
+	                } else {
+	                    sql = "UPDATE usuario SET nome=?, email=?, setor=?, id_funcao=? WHERE id=?";
+	                }
+	                statement = bd.getConnection().prepareStatement(sql);
+	                prepararCampos();
+	                statement.setInt(6, usuario.getId());
+	                statement.executeUpdate();
+	                return "Usuario alterado com sucesso.";
+
+	            case EXCLUSAO:
+
+	                sql = "DELETE FROM usuario WHERE id=?";
+	                statement = bd.getConnection().prepareStatement(sql);
+	                statement.setInt(1, usuario.getId());
+	                statement.executeUpdate();
+	                return "Usuario excluido com sucesso.";
+	                
+	            default:
+	                return "Operação desconhecida.";
+	        }
+	    } catch(SQLException erro) {
+	        return "Erro: " + erro.getMessage();
+	    } finally {
+	        bd.close();
+	    }
 	}
 	
 	public Usuario validarLogin(String email, String senha) {
 
-		sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.email = ?";
+	    BD bd = new BD();
+	    if (!bd.connect()) {
+	        return null;
+	    }
 
 	    try {
 
+	        sql = SQL_USUARIO_COM_FUNCAO + " WHERE u.email = ?";
 	        statement = bd.getConnection().prepareStatement(sql);
 	        statement.setString(1, email);
-
 	        resultSet = statement.executeQuery();
 
 	        if (resultSet.next()) {
-
-	            Usuario usuario = carregarUsuario(resultSet);
-
+	            Usuario usuarioLogin = new Usuario();
+	            carregarUsuario(usuarioLogin, resultSet);
 	            String hashDigitado = Usuario.string2Hash(senha);
-
-	            if (hashDigitado.equals(usuario.getSenhaHash())) {
-	                return usuario;
+	            if (hashDigitado.equals(usuarioLogin.getSenhaHash())) {
+	                return usuarioLogin;
 	            }
 	        }
-
 	    } catch (SQLException erro) {
-	        erro.printStackTrace();
+	        System.out.println("Erro ao validar login: " + erro.getMessage());
+	    } finally {
+	        bd.close();
 	    }
-
 	    return null;
 	}
 	
-	private Usuario carregarUsuario(ResultSet rs) throws SQLException {
+	private void prepararCampos() throws SQLException {
 
-	    Funcao funcao = carregarFuncao(rs);
+	    statement.setString(1, usuario.getNome());
+	    statement.setString(2, usuario.getEmail());
+	    statement.setString(3, usuario.getSenhaHash());
+	    statement.setDate(4, new java.sql.Date(usuario.getDataCadastro().getTime()));
+	    statement.setString(5, usuario.getSetor().name());
 
-	    return new Usuario(
-	        rs.getInt("id"),
-	        rs.getString("nome"),
-	        rs.getString("email"),
-	        rs.getString("senha"),
-	        rs.getDate("data_cadastro"),
-	        Setor.valueOf(rs.getString("setor")),
-	        funcao
-	    );
+	    if (usuario.getFuncao() != null) {
+	        statement.setInt(6, usuario.getFuncao().getId() );
+	    } else {
+	        statement.setNull(6, Types.INTEGER);
+	    }
+	}
+	
+	private void carregarUsuario(Usuario u, ResultSet rs) throws SQLException {
+	    u.setId(rs.getInt("id"));
+	    u.setNome(rs.getString("nome"));
+	    u.setEmail(rs.getString("email"));
+	    u.setSenhaHash(rs.getString("senha"));
+	    u.setDataCadastro(rs.getDate("data_cadastro"));
+	    u.setSetor(Setor.valueOf(rs.getString("setor")));
+	    u.setFuncao(carregarFuncao(rs));
 	}
 	
 	private Funcao carregarFuncao(ResultSet rs) throws SQLException {
-		int idFuncao = rs.getInt("id_funcao");
 
-		if (rs.wasNull()) {
-			return null;
-		}
-	
-		Funcao funcao = new Funcao();
-
-		funcao.setId(idFuncao);
-		funcao.setNome(rs.getString("funcao_nome"));
-		
-		return funcao;
+	    int idFuncao = rs.getInt("id_funcao");
+	    if (rs.wasNull()) {
+	        return null;
+	    }
+	    Funcao funcao = new Funcao();
+	    funcao.setId(idFuncao);
+	    funcao.setNome(rs.getString("funcao_nome"));
+	    FuncaoDAO funcaoDAO = new FuncaoDAO(funcao);
+	    funcaoDAO.localizar();
+	    return funcao;
 	}
 	
-	private static final String SQL_USUARIO_COM_FUNCAO = """
-		    SELECT
-		        u.*,
-		        f.id_funcao AS funcao_id,
-		        f.nome AS funcao_nome
-		    FROM usuario u
-		    LEFT JOIN funcao f ON f.id_funcao = u.id_funcao
-		""";
+	private static final String SQL_USUARIO_COM_FUNCAO = "SELECT u.*, f.id_funcao AS funcao_id, f.nome AS funcao_nome FROM usuario u LEFT JOIN funcao f ON f.id_funcao = u.id_funcao";
 }
