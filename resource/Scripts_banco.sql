@@ -104,7 +104,7 @@ CREATE TABLE arquivo_ticket (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_arquivo VARCHAR(255) NOT NULL,
     tipo_arquivo VARCHAR(100),
-    arquivo BLOB NOT NULL,
+    arquivo MEDIUMBLOB NOT NULL,
     data_envio DATE NOT NULL,
     id_ticket INT NOT NULL,
     id_enviado_por INT NOT NULL,

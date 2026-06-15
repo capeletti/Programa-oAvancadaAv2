@@ -3,15 +3,14 @@ package model;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Usuario {
 	private int id;
 	private String nome;
 	private String email;
 	private String senhaHash;
-	private Date dataCadastro;
+	private LocalDateTime dataCadastro;
 	private Setor setor;
 	private Funcao funcao;
 
@@ -25,7 +24,7 @@ public class Usuario {
 	    this.funcao = null;
 	}	
 
-	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor, Funcao funcao) {
+	public Usuario(int id, String nome, String email, String senhaHash, LocalDateTime dataCadastro, Setor setor, Funcao funcao) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -63,10 +62,10 @@ public class Usuario {
 	public void setSenhaHash(String senhaHash) {
 	    this.senhaHash = senhaHash;
 	}
-	public Date getDataCadastro() {
+	public LocalDateTime getDataCadastro() {
 		return dataCadastro;
 	}
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(LocalDateTime dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 	public Setor getSetor() {

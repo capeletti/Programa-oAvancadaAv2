@@ -87,20 +87,35 @@ public class UsuarioDAO implements OperacaoBD {
 	                    + "(nome, email, senha, data_cadastro, setor, id_funcao) "
 	                    + "VALUES (?, ?, ?, ?, ?, ?)";
 	                statement = bd.getConnection().prepareStatement(sql);
-	                prepararCampos();
+	        	    statement.setString(1, usuario.getNome());
+	        	    statement.setString(2, usuario.getEmail());
+	        	    statement.setString(3, usuario.getSenhaHash());
+	        	    statement.setTimestamp(4, Timestamp.valueOf(usuario.getDataCadastro()));
+	        	    statement.setString(5, usuario.getSetor().name());
+	        	    statement.setInt(6, usuario.getFuncao().getId());
 	                statement.executeUpdate();
 	                return "Usuario incluido com sucesso.";
 
 	            case ALTERACAO:
 	            	
 	                if(usuario.possuiSenha()) {
-	                    sql = "UPDATE usuario SET nome=?, email=?, senha=?, setor=?, id_funcao=? WHERE id=?";
+	                    sql = "UPDATE usuario SET nome=?, email=?, setor=?, id_funcao=?, senha=? WHERE id=?";
 	                } else {
 	                    sql = "UPDATE usuario SET nome=?, email=?, setor=?, id_funcao=? WHERE id=?";
 	                }
 	                statement = bd.getConnection().prepareStatement(sql);
-	                prepararCampos();
-	                statement.setInt(6, usuario.getId());
+	        	    statement.setString(1, usuario.getNome());
+	        	    statement.setString(2, usuario.getEmail());
+	        	    statement.setString(3, usuario.getSetor().name());
+	        	    statement.setInt(4, usuario.getFuncao().getId());
+	        	    
+	                if(usuario.possuiSenha()) {
+	                	statement.setString(5, usuario.getSenhaHash());
+		                statement.setInt(6, usuario.getId());
+	                } else {
+		                statement.setInt(5, usuario.getId());
+	                }
+	                
 	                statement.executeUpdate();
 	                return "Usuario alterado com sucesso.";
 
@@ -152,27 +167,12 @@ public class UsuarioDAO implements OperacaoBD {
 	    return null;
 	}
 	
-	private void prepararCampos() throws SQLException {
-
-	    statement.setString(1, usuario.getNome());
-	    statement.setString(2, usuario.getEmail());
-	    statement.setString(3, usuario.getSenhaHash());
-	    statement.setDate(4, new java.sql.Date(usuario.getDataCadastro().getTime()));
-	    statement.setString(5, usuario.getSetor().name());
-
-	    if (usuario.getFuncao() != null) {
-	        statement.setInt(6, usuario.getFuncao().getId() );
-	    } else {
-	        statement.setNull(6, Types.INTEGER);
-	    }
-	}
-	
 	private void carregarUsuario(Usuario u, ResultSet rs) throws SQLException {
 	    u.setId(rs.getInt("id"));
 	    u.setNome(rs.getString("nome"));
 	    u.setEmail(rs.getString("email"));
 	    u.setSenhaHash(rs.getString("senha"));
-	    u.setDataCadastro(rs.getDate("data_cadastro"));
+	    u.setDataCadastro(rs.getTimestamp("data_cadastro").toLocalDateTime());
 	    u.setSetor(Setor.valueOf(rs.getString("setor")));
 	    u.setFuncao(carregarFuncao(rs));
 	}
