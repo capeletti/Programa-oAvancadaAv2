@@ -3,6 +3,7 @@ package model;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class ArquivoTicketDAO implements OperacaoBD {
@@ -145,7 +146,7 @@ public class ArquivoTicketDAO implements OperacaoBD {
 		arquivo.setNomeArquivo(rs.getString("nome_arquivo"));
 		arquivo.setTipoArquivo(rs.getString("tipo_arquivo"));
 		arquivo.setArquivo(rs.getBytes("arquivo"));
-		arquivo.setDataEnvio(rs.getDate("data_envio"));
+		arquivo.setDataEnvio(rs.getTimestamp("data_envio").toLocalDateTime());
 		arquivo.setTicket(new Ticket());
 		arquivo.getTicket().setId(rs.getInt("id_ticket"));
 		arquivo.setEnviadoPor(new Usuario());
@@ -156,7 +157,7 @@ public class ArquivoTicketDAO implements OperacaoBD {
 		statement.setString(1, arquivoTicket.getNomeArquivo());
 		statement.setString(2, arquivoTicket.getTipoArquivo());
 		statement.setBytes(3, arquivoTicket.getArquivo());
-		statement.setDate(4, new java.sql.Date(arquivoTicket.getDataEnvio().getTime()));
+		statement.setTimestamp(4, Timestamp.valueOf(arquivoTicket.getDataEnvio()));
 		statement.setInt(5, arquivoTicket.getTicket().getId());
 		statement.setInt(6, arquivoTicket.getEnviadoPor().getId());
 	}

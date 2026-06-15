@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ArquivoTicket {
 
@@ -8,7 +8,7 @@ public class ArquivoTicket {
 	private String nomeArquivo;
 	private String tipoArquivo;
 	private byte[] arquivo;
-	private Date dataEnvio;
+	private LocalDateTime dataEnvio;
 	private Ticket ticket;
 	private Usuario enviadoPor;
 
@@ -60,11 +60,11 @@ public class ArquivoTicket {
 	}
 
 
-	public Date getDataEnvio() {
+	public LocalDateTime getDataEnvio() {
 		return dataEnvio;
 	}
 
-	public void setDataEnvio(Date dataEnvio) {
+	public void setDataEnvio(LocalDateTime dataEnvio) {
 		this.dataEnvio = dataEnvio;
 	}
 
