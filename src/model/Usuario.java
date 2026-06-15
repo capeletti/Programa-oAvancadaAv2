@@ -15,6 +15,16 @@ public class Usuario {
 	private Setor setor;
 	private Funcao funcao;
 
+	public Usuario() {
+	    this.id = -1;
+	    this.nome = null;
+	    this.email = null;
+	    this.senhaHash = null;
+	    this.dataCadastro = null;
+	    this.setor = null;
+	    this.funcao = null;
+	}	
+
 	public Usuario(int id, String nome, String email, String senhaHash, Date dataCadastro, Setor setor, Funcao funcao) {
 		super();
 		this.id = id;
@@ -25,7 +35,10 @@ public class Usuario {
 		this.setor = setor;
 		this.funcao = funcao;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
@@ -44,8 +57,11 @@ public class Usuario {
 	public String getSenhaHash() {
 		return senhaHash;
 	}
-	public void setSenhaHash(String senha) {
-		this.senhaHash = Usuario.string2Hash(senha);
+	public void setSenha(String senha) {
+	    this.senhaHash = Usuario.string2Hash(senha);
+	}
+	public void setSenhaHash(String senhaHash) {
+	    this.senhaHash = senhaHash;
 	}
 	public Date getDataCadastro() {
 		return dataCadastro;
@@ -90,7 +106,7 @@ public class Usuario {
     }
     
     public boolean possuiSenha() {
-        return senhaHash != null && !senhaHash.isBlank();
+        return senhaHash != null && !senhaHash.isEmpty();
     }
 	
 }

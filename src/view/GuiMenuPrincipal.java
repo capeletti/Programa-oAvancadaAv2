@@ -142,7 +142,7 @@ public class GuiMenuPrincipal extends JFrame {
 			return;
 		}
 		dispose();
-		GuiListarUsuario tela = new GuiListarUsuario(bd);
+		GuiListarUsuario tela = new GuiListarUsuario(bd, usuarioLogado);
 		tela.setVisible(true);
 	}
 
