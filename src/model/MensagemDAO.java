@@ -37,10 +37,9 @@ public class MensagemDAO implements OperacaoBD {
                 ticket.setId(resultSet.getInt("id_ticket"));
                 mensagem.setTicket(ticket);
 
-                Usuario autor = new Usuario(
-                    resultSet.getInt("id_autor"),
-                    null, null, null, null, null, null
-                );
+                Usuario autor = new Usuario();
+                autor.setId(resultSet.getInt("id_autor"));
+                
                 mensagem.setAutor(autor);
 
                 return true;
@@ -132,11 +131,9 @@ public class MensagemDAO implements OperacaoBD {
                 m.setDataEnvio(resultSet.getTimestamp("data_envio").toLocalDateTime());
                 m.setTicket(ticket);
 
-                Usuario autor = new Usuario(
-                    resultSet.getInt("id_autor"),
-                    resultSet.getString("autor_nome"),
-                    null, null, null, null, null
-                );
+                Usuario autor = new Usuario();
+                autor.setId(resultSet.getInt("id_autor"));
+                autor.setNome(resultSet.getString("autor_nome"));
                 m.setAutor(autor);
 
                 lista.add(m);
