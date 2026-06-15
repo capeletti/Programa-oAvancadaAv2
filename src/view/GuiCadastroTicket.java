@@ -3,6 +3,8 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
@@ -19,6 +21,8 @@ import javax.swing.border.EmptyBorder;
 
 import model.BD;
 import model.Categoria;
+import model.Mensagem;
+import model.MensagemDAO;
 import model.Permissao;
 import model.Prioridade;
 import model.Setor;
@@ -27,6 +31,7 @@ import model.Ticket;
 import model.TicketDAO;
 import model.TipoOperacaoBD;
 import model.Usuario;
+import model.UsuarioDAO;
 
 public class GuiCadastroTicket extends JFrame {
 
@@ -53,7 +58,16 @@ public class GuiCadastroTicket extends JFrame {
 	private JButton btnSalvar;
 	private JButton btnResponder;
 	private JButton btnFinalizar;
+	private JTextArea txtMensagens;
+	private JTextField txtNovaMensagem;
+	private JButton btnEnviarMensagem;
+	private JScrollPane scrollMensagens;
+	private JLabel lblMensagens;
+	private JLabel lblNovaMensagem;
 
+
+	
+	
 	public GuiCadastroTicket(BD bd, Usuario usuarioLogado) {
 		this.bd = bd;
 		this.usuarioLogado = usuarioLogado;
@@ -76,7 +90,7 @@ public class GuiCadastroTicket extends JFrame {
 	private void inicializarComponentes() {
 		setTitle(modoEdicao ? "Detalhes do Ticket #" + ticket.getId() : "Novo Ticket");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 600, 540);
+		setBounds(100, 100, 950, 540);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -154,14 +168,14 @@ public class GuiCadastroTicket extends JFrame {
 		lblDataFechamento.setBounds(110, 310, 200, 18);
 		contentPane.add(lblDataFechamento);
 
-		JLabel lblCriadoPorFixo = new JLabel("Criado por (id):");
+		JLabel lblCriadoPorFixo = new JLabel("Criado por:");
 		lblCriadoPorFixo.setBounds(20, 335, 110, 18);
 		contentPane.add(lblCriadoPorFixo);
 		lblCriadoPor = new JLabel("-");
 		lblCriadoPor.setBounds(135, 335, 200, 18);
 		contentPane.add(lblCriadoPor);
 
-		JLabel lblRespondidoPorFixo = new JLabel("Respondido por (id):");
+		JLabel lblRespondidoPorFixo = new JLabel("Respondido por:");
 		lblRespondidoPorFixo.setBounds(20, 360, 150, 18);
 		contentPane.add(lblRespondidoPorFixo);
 		lblRespondidoPor = new JLabel("-");
@@ -204,6 +218,34 @@ public class GuiCadastroTicket extends JFrame {
 		});
 		contentPane.add(btnFinalizar);
 
+		lblMensagens = new JLabel("Mensagens");
+		lblMensagens.setBounds(590, 15, 200, 18);
+		contentPane.add(lblMensagens);
+
+		txtMensagens = new JTextArea();
+		txtMensagens.setLineWrap(true);
+		txtMensagens.setWrapStyleWord(true);
+		txtMensagens.setEditable(false);
+		scrollMensagens = new JScrollPane(txtMensagens);
+		scrollMensagens.setBounds(590, 34, 340, 285);
+		contentPane.add(scrollMensagens);
+
+		lblNovaMensagem = new JLabel("Nova mensagem");
+		lblNovaMensagem.setBounds(590, 323, 200, 18);
+		contentPane.add(lblNovaMensagem);
+
+		
+		txtNovaMensagem = new JTextField();
+		txtNovaMensagem.setBounds(590, 345, 250, 28);
+		contentPane.add(txtNovaMensagem);
+		btnEnviarMensagem = new JButton("Enviar");
+		btnEnviarMensagem.setBounds(850, 345, 80, 28);
+		btnEnviarMensagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				enviarMensagem();
+			}
+		});
+		contentPane.add(btnEnviarMensagem);		
 		atualizarVisibilidadeBotoes();
 		atualizarVisibilidadeCampos();
 	}
@@ -233,6 +275,12 @@ public class GuiCadastroTicket extends JFrame {
 		cmbSetor.setEnabled(editavel);
 		cmbPrioridade.setEnabled(editavel);
 		cmbCategoria.setEnabled(editavel);
+
+		scrollMensagens.setVisible(modoEdicao);
+		lblMensagens.setVisible(modoEdicao);
+		lblNovaMensagem.setVisible(modoEdicao);
+		txtNovaMensagem.setVisible(modoEdicao);
+		btnEnviarMensagem.setVisible(modoEdicao);
 	}
 
 	private boolean temPermissao(Permissao p) {
@@ -260,13 +308,74 @@ public class GuiCadastroTicket extends JFrame {
 		}
 
 		if (ticket.getCriadoPor() != null) {
-			lblCriadoPor.setText(String.valueOf(ticket.getCriadoPor().getId()));
+			lblCriadoPor.setText(buscarNomeUsuario(ticket.getCriadoPor().getId()));
 		}
 		if (ticket.getRespondidoPor() != null) {
-			lblRespondidoPor.setText(String.valueOf(ticket.getRespondidoPor().getId()));
+			lblRespondidoPor.setText(buscarNomeUsuario(ticket.getRespondidoPor().getId()));
 		}
+
+		carregarMensagens();
 	}
 
+	private String buscarNomeUsuario(int id) {
+		Usuario u = new Usuario();
+		u.setId(id);
+		UsuarioDAO dao = new UsuarioDAO(u);
+		if (dao.localizar()) {
+			return u.getNome();
+		}
+		return String.valueOf(id);
+	}
+
+	private void carregarMensagens() {
+		if (ticket == null) {
+			return;
+		}
+		
+		
+
+		MensagemDAO dao = new MensagemDAO(new Mensagem());
+		ArrayList<Mensagem> mensagens = dao.listarPorTicket(ticket);
+
+		StringBuilder sb = new StringBuilder();
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+		for (int i = 0; i < mensagens.size(); i++) {
+			Mensagem m = mensagens.get(i);
+			sb.append("[").append(m.getDataEnvio().format(formato)).append("] ");
+			sb.append(m.getAutor().getNome()).append(":\n");
+			sb.append(m.getTexto()).append("\n\n");
+		}
+
+		txtMensagens.setText(sb.toString());
+	}
+
+	private void enviarMensagem() {
+		String texto = txtNovaMensagem.getText().trim();
+
+		if (texto.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Digite uma mensagem.");
+			return;
+		}
+
+		Mensagem msg = new Mensagem();
+		msg.setTicket(ticket);
+		msg.setAutor(usuarioLogado);
+		msg.setTexto(texto);
+
+		MensagemDAO dao = new MensagemDAO(msg);
+		String resultado = dao.atualizar(TipoOperacaoBD.INCLUSAO);
+
+		if (resultado.startsWith("Erro") || resultado.startsWith("Falha")) {
+			JOptionPane.showMessageDialog(this, resultado);
+			return;
+		}
+
+		txtNovaMensagem.setText("");
+		carregarMensagens();
+	}
+
+	
 	private void voltar() {
 		dispose();
 		GuiListarTickets tela = new GuiListarTickets(bd, usuarioLogado);
@@ -375,3 +484,5 @@ public class GuiCadastroTicket extends JFrame {
 		}
 	}
 }
+
+
