@@ -176,24 +176,28 @@ public class TicketDAO implements OperacaoBD {
 		t.setId(rs.getInt("id"));
 		t.setTitulo(rs.getString("titulo"));
 		t.setDescricao(rs.getString("descricao"));
-		t.setSetorDestino(Setor.valueOf(rs.getString("setor_destino")));
-		t.setStatus(Status.valueOf(rs.getString("status")));
-		t.setPrioridade(Prioridade.valueOf(rs.getString("prioridade")));
-		t.setCategoria(Categoria.valueOf(rs.getString("categoria")));
+
+		try {
+			t.setSetorDestino(Setor.valueOf(rs.getString("setor_destino")));
+			t.setStatus(Status.valueOf(rs.getString("status")));
+			t.setPrioridade(Prioridade.valueOf(rs.getString("prioridade")));
+			t.setCategoria(Categoria.valueOf(rs.getString("categoria")));
+		} catch (IllegalArgumentException erro) {
+			System.out.println("Valor invalido de enum no ticket " + t.getId() + ": " + erro.getMessage());
+		}
+
 		t.setDataAbertura(rs.getDate("data_abertura"));
 		t.setDataFechamento(rs.getDate("data_fechamento"));
 
-		t.setCriadoPor(new Usuario(
-			rs.getInt("id_criado_por"),
-			null, null, null, null, null, null
-		));
+		Usuario criadoPor = new Usuario();
+		criadoPor.setId(rs.getInt("id_criado_por"));
+		t.setCriadoPor(criadoPor);
 
 		int idRespondido = rs.getInt("id_respondido_por");
 		if (!rs.wasNull()) {
-			t.setRespondidoPor(new Usuario(
-				idRespondido,
-				null, null, null, null, null, null
-			));
+			Usuario respondidoPor = new Usuario();
+			respondidoPor.setId(idRespondido);
+			t.setRespondidoPor(respondidoPor);
 		}
 	}
 

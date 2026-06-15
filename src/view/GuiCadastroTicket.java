@@ -2,16 +2,21 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,6 +24,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import model.ArquivoTicket;
+import model.ArquivoTicketDAO;
 import model.BD;
 import model.Categoria;
 import model.Mensagem;
@@ -65,9 +72,16 @@ public class GuiCadastroTicket extends JFrame {
 	private JLabel lblMensagens;
 	private JLabel lblNovaMensagem;
 
+	private JList<String> listaAnexos;
+	private JScrollPane scrollAnexos;
+	private JLabel lblAnexos;
+	private JButton btnAnexar;
+	private JButton btnBaixarAnexo;
+	private ArrayList<ArquivoTicket> arquivosCarregados;
 
-	
-	
+
+
+
 	public GuiCadastroTicket(BD bd, Usuario usuarioLogado) {
 		this.bd = bd;
 		this.usuarioLogado = usuarioLogado;
@@ -90,7 +104,7 @@ public class GuiCadastroTicket extends JFrame {
 	private void inicializarComponentes() {
 		setTitle(modoEdicao ? "Detalhes do Ticket #" + ticket.getId() : "Novo Ticket");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 950, 540);
+		setBounds(100, 100, 1300, 540);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -245,7 +259,35 @@ public class GuiCadastroTicket extends JFrame {
 				enviarMensagem();
 			}
 		});
-		contentPane.add(btnEnviarMensagem);		
+		contentPane.add(btnEnviarMensagem);
+
+		lblAnexos = new JLabel("Anexos");
+		lblAnexos.setBounds(950, 15, 200, 18);
+		contentPane.add(lblAnexos);
+
+		listaAnexos = new JList<>(new DefaultListModel<String>());
+		scrollAnexos = new JScrollPane(listaAnexos);
+		scrollAnexos.setBounds(950, 34, 330, 285);
+		contentPane.add(scrollAnexos);
+
+		btnAnexar = new JButton("Anexar arquivo");
+		btnAnexar.setBounds(950, 345, 160, 28);
+		btnAnexar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				anexarArquivo();
+			}
+		});
+		contentPane.add(btnAnexar);
+
+		btnBaixarAnexo = new JButton("Baixar");
+		btnBaixarAnexo.setBounds(1120, 345, 160, 28);
+		btnBaixarAnexo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				baixarAnexo();
+			}
+		});
+		contentPane.add(btnBaixarAnexo);
+
 		atualizarVisibilidadeBotoes();
 		atualizarVisibilidadeCampos();
 	}
@@ -281,6 +323,11 @@ public class GuiCadastroTicket extends JFrame {
 		lblNovaMensagem.setVisible(modoEdicao);
 		txtNovaMensagem.setVisible(modoEdicao);
 		btnEnviarMensagem.setVisible(modoEdicao);
+
+		scrollAnexos.setVisible(modoEdicao);
+		lblAnexos.setVisible(modoEdicao);
+		btnAnexar.setVisible(modoEdicao);
+		btnBaixarAnexo.setVisible(modoEdicao);
 	}
 
 	private boolean temPermissao(Permissao p) {
@@ -315,6 +362,7 @@ public class GuiCadastroTicket extends JFrame {
 		}
 
 		carregarMensagens();
+		carregarAnexos();
 	}
 
 	private String buscarNomeUsuario(int id) {
@@ -375,7 +423,87 @@ public class GuiCadastroTicket extends JFrame {
 		carregarMensagens();
 	}
 
-	
+	private void carregarAnexos() {
+		if (ticket == null) {
+			return;
+		}
+
+		ArquivoTicketDAO dao = new ArquivoTicketDAO(new ArquivoTicket());
+		arquivosCarregados = dao.listarPorTicket(ticket);
+
+		DefaultListModel<String> modelo = new DefaultListModel<>();
+		for (int i = 0; i < arquivosCarregados.size(); i++) {
+			modelo.addElement(arquivosCarregados.get(i).getNomeArquivo());
+		}
+
+		listaAnexos.setModel(modelo);
+	}
+
+	private void anexarArquivo() {
+		JFileChooser seletor = new JFileChooser();
+		if (seletor.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) {
+			return;
+		}
+
+		File arquivo = seletor.getSelectedFile();
+
+		try {
+			byte[] conteudo = Files.readAllBytes(arquivo.toPath());
+
+			ArquivoTicket anexo = new ArquivoTicket();
+			anexo.setNomeArquivo(arquivo.getName());
+			anexo.setTipoArquivo(extensao(arquivo.getName()));
+			anexo.setArquivo(conteudo);
+			anexo.setDataEnvio(new Date());
+			anexo.setTicket(ticket);
+			anexo.setEnviadoPor(usuarioLogado);
+
+			ArquivoTicketDAO dao = new ArquivoTicketDAO(anexo);
+			String resultado = dao.atualizar(TipoOperacaoBD.INCLUSAO);
+
+			if (resultado.startsWith("Erro") || resultado.startsWith("Falha")) {
+				JOptionPane.showMessageDialog(this, resultado);
+				return;
+			}
+
+			carregarAnexos();
+		} catch (Exception erro) {
+			JOptionPane.showMessageDialog(this, "Erro ao ler o arquivo: " + erro.getMessage());
+		}
+	}
+
+	private void baixarAnexo() {
+		int indice = listaAnexos.getSelectedIndex();
+		if (indice < 0) {
+			JOptionPane.showMessageDialog(this, "Selecione um anexo para baixar.");
+			return;
+		}
+
+		ArquivoTicket anexo = arquivosCarregados.get(indice);
+
+		JFileChooser seletor = new JFileChooser();
+		seletor.setSelectedFile(new File(anexo.getNomeArquivo()));
+		if (seletor.showSaveDialog(this) != JFileChooser.APPROVE_OPTION) {
+			return;
+		}
+
+		try {
+			Files.write(seletor.getSelectedFile().toPath(), anexo.getArquivo());
+			JOptionPane.showMessageDialog(this, "Arquivo salvo com sucesso.");
+		} catch (Exception erro) {
+			JOptionPane.showMessageDialog(this, "Erro ao salvar o arquivo: " + erro.getMessage());
+		}
+	}
+
+	private String extensao(String nome) {
+		int ponto = nome.lastIndexOf('.');
+		if (ponto < 0) {
+			return "";
+		}
+		return nome.substring(ponto + 1);
+	}
+
+
 	private void voltar() {
 		dispose();
 		GuiListarTickets tela = new GuiListarTickets(bd, usuarioLogado);
