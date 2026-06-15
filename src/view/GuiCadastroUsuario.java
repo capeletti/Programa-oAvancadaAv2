@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
@@ -240,7 +241,7 @@ public class GuiCadastroUsuario extends JFrame {
 	private Usuario montarUsuarioDaTela() {
 	    if(usuario == null) {
 	        usuario = new Usuario();
-	        usuario.setDataCadastro(new java.util.Date());
+	        usuario.setDataCadastro(LocalDateTime.now());
 	    }
 	    
 	    usuario.setNome(txtNome.getText().trim());

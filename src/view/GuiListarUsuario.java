@@ -16,7 +16,7 @@ import model.UsuarioDAO;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -132,7 +132,7 @@ public class GuiListarUsuario extends JFrame {
 			Usuario usuarioBase = new Usuario();
 			UsuarioDAO dao = new UsuarioDAO(usuarioBase);
 			ArrayList<Usuario> lista = dao.listar();
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 			modeloTabela.setRowCount(0);
 
@@ -145,7 +145,7 @@ public class GuiListarUsuario extends JFrame {
 						usuario.getEmail(),
 						usuario.getSetor() != null ? usuario.getSetor().getDescricao() : "",
 						usuario.getFuncao() != null ? usuario.getFuncao().getNome() : "",
-						usuario.getDataCadastro() != null ? formato.format(usuario.getDataCadastro()) : ""
+						usuario.getDataCadastro() != null ? usuario.getDataCadastro().format(formato) : ""
 					}
 				);
 			}
