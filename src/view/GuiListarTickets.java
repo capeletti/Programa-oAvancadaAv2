@@ -2,7 +2,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -194,7 +194,7 @@ public class GuiListarTickets extends JFrame {
 				lista = dao.listarTodos();
 			}
 
-			SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+			DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			modeloTabela.setRowCount(0);
 
 			for (int i = 0; i < lista.size(); i++) {
@@ -206,7 +206,7 @@ public class GuiListarTickets extends JFrame {
 					t.getPrioridade() != null ? t.getPrioridade().name() : "",
 					t.getCategoria() != null ? t.getCategoria().name() : "",
 					t.getSetorDestino() != null ? t.getSetorDestino().getDescricao() : "",
-					t.getDataAbertura() != null ? formato.format(t.getDataAbertura()) : ""
+					t.getDataAbertura() != null ? t.getDataAbertura().format(formato) : ""
 				});
 			}
 		} catch (Exception erro) {

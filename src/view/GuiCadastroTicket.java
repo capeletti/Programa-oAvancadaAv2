@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -346,12 +345,12 @@ public class GuiCadastroTicket extends JFrame {
 
 		lblStatus.setText(ticket.getStatus().name());
 
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		if (ticket.getDataAbertura() != null) {
-			lblDataAbertura.setText(formato.format(ticket.getDataAbertura()));
+			lblDataAbertura.setText(ticket.getDataAbertura().format(formato));
 		}
 		if (ticket.getDataFechamento() != null) {
-			lblDataFechamento.setText(formato.format(ticket.getDataFechamento()));
+			lblDataFechamento.setText(ticket.getDataFechamento().format(formato));
 		}
 
 		if (ticket.getCriadoPor() != null) {
@@ -454,7 +453,7 @@ public class GuiCadastroTicket extends JFrame {
 			anexo.setNomeArquivo(arquivo.getName());
 			anexo.setTipoArquivo(extensao(arquivo.getName()));
 			anexo.setArquivo(conteudo);
-			anexo.setDataEnvio(new Date());
+			anexo.setDataEnvio(LocalDateTime.now());
 			anexo.setTicket(ticket);
 			anexo.setEnviadoPor(usuarioLogado);
 
@@ -548,7 +547,7 @@ public class GuiCadastroTicket extends JFrame {
 		novo.setPrioridade((Prioridade) cmbPrioridade.getSelectedItem());
 		novo.setCategoria((Categoria) cmbCategoria.getSelectedItem());
 		novo.setStatus(Status.ABERTO);
-		novo.setDataAbertura(new Date());
+		novo.setDataAbertura(LocalDateTime.now());
 		novo.setDataFechamento(null);
 		novo.setCriadoPor(usuarioLogado);
 		novo.setRespondidoPor(null);
@@ -597,7 +596,7 @@ public class GuiCadastroTicket extends JFrame {
 		}
 
 		ticket.setStatus(Status.FECHADO);
-		ticket.setDataFechamento(new Date());
+		ticket.setDataFechamento(LocalDateTime.now());
 
 		if (ticket.getRespondidoPor() == null) {
 			ticket.setRespondidoPor(usuarioLogado);
