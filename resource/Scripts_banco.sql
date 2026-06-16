@@ -76,8 +76,8 @@ CREATE TABLE IF NOT EXISTS ticket (
     status VARCHAR(50) NOT NULL,
     prioridade VARCHAR(50) NOT NULL,
     categoria VARCHAR(50) NOT NULL,
-    data_abertura DATE NOT NULL,
-    data_fechamento DATE,
+    data_abertura DATETIME NOT NULL,
+    data_fechamento DATETIME,
     id_criado_por INT NOT NULL,
     id_respondido_por INT,
 
@@ -106,7 +106,7 @@ CREATE TABLE arquivo_ticket (
     nome_arquivo VARCHAR(255) NOT NULL,
     tipo_arquivo VARCHAR(100),
     arquivo MEDIUMBLOB NOT NULL,
-    data_envio DATE NOT NULL,
+    data_envio DATETIME NOT NULL,
     id_ticket INT NOT NULL,
     id_enviado_por INT NOT NULL,
 

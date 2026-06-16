@@ -319,9 +319,10 @@ public class GuiCadastroTicket extends JFrame {
 
 		scrollMensagens.setVisible(modoEdicao);
 		lblMensagens.setVisible(modoEdicao);
-		lblNovaMensagem.setVisible(modoEdicao);
-		txtNovaMensagem.setVisible(modoEdicao);
-		btnEnviarMensagem.setVisible(modoEdicao);
+		boolean podeNovaMensagem = modoEdicao && ticket.getStatus() != Status.FECHADO;
+		lblNovaMensagem.setVisible(podeNovaMensagem);
+		txtNovaMensagem.setVisible(podeNovaMensagem);
+		btnEnviarMensagem.setVisible(podeNovaMensagem);
 
 		scrollAnexos.setVisible(modoEdicao);
 		lblAnexos.setVisible(modoEdicao);
@@ -512,6 +513,11 @@ public class GuiCadastroTicket extends JFrame {
 	private void salvar() {
 		if (txtTitulo.getText().trim().isEmpty()) {
 			JOptionPane.showMessageDialog(this, "Informe o titulo.");
+			return;
+		}
+
+		if (txtTitulo.getText().trim().length() > 200) {
+			JOptionPane.showMessageDialog(this, "O titulo deve ter no maximo 200 caracteres.");
 			return;
 		}
 
