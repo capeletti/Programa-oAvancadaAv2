@@ -95,7 +95,7 @@ public class GuiListarTickets extends JFrame {
 		scrollPane.setViewportView(table);
 
 		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(20, 15, 130, 30);
+		btnVoltar.setBounds(20, 15, 156, 30);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				voltar();
@@ -104,7 +104,7 @@ public class GuiListarTickets extends JFrame {
 		contentPane.add(btnVoltar);
 
 		JButton btnNovo = new JButton("Novo Ticket");
-		btnNovo.setBounds(170, 15, 140, 30);
+		btnNovo.setBounds(192, 15, 156, 30);
 		btnNovo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				novoTicket();
@@ -114,7 +114,7 @@ public class GuiListarTickets extends JFrame {
 		btnNovo.setVisible(temPermissao(Permissao.ABRIR_TICKET));
 
 		JButton btnProximo = new JButton("Proximo da Fila");
-		btnProximo.setBounds(320, 15, 160, 30);
+		btnProximo.setBounds(364, 15, 156, 30);
 		btnProximo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				abrirProximoDaFila();
@@ -124,7 +124,7 @@ public class GuiListarTickets extends JFrame {
 		btnProximo.setVisible(temPermissao(Permissao.RESPONDER_TICKET));
 
 		JButton btnFiltro = new JButton("Filtrar: todos");
-		btnFiltro.setBounds(490, 15, 180, 30);
+		btnFiltro.setBounds(536, 15, 156, 30);
 		btnFiltro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				filtroMeuSetor = !filtroMeuSetor;
@@ -135,7 +135,7 @@ public class GuiListarTickets extends JFrame {
 		contentPane.add(btnFiltro);
 
 		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.setBounds(680, 15, 120, 30);
+		btnAtualizar.setBounds(708, 15, 156, 30);
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				atualizarLista();

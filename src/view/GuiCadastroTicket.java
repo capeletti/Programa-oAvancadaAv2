@@ -62,7 +62,7 @@ public class GuiCadastroTicket extends JFrame {
 
 	private JButton btnCancelar;
 	private JButton btnSalvar;
-	private JButton btnResponder;
+	private JButton btnAssumir;
 	private JButton btnFinalizar;
 	private JTextArea txtMensagens;
 	private JTextField txtNovaMensagem;
@@ -77,6 +77,7 @@ public class GuiCadastroTicket extends JFrame {
 	private JButton btnAnexar;
 	private JButton btnBaixarAnexo;
 	private ArrayList<ArquivoTicket> arquivosCarregados;
+	private ArrayList<ArquivoTicket> anexosPendentes = new ArrayList<>();
 
 
 
@@ -103,7 +104,11 @@ public class GuiCadastroTicket extends JFrame {
 	private void inicializarComponentes() {
 		setTitle(modoEdicao ? "Detalhes do Ticket #" + ticket.getId() : "Novo Ticket");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 1300, 540);
+		if (modoEdicao) {
+			setBounds(100, 100, 1300, 540);
+		} else {
+			setBounds(100, 100, 960, 540);
+		}
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -213,14 +218,14 @@ public class GuiCadastroTicket extends JFrame {
 		});
 		contentPane.add(btnSalvar);
 
-		btnResponder = new JButton("Responder");
-		btnResponder.setBounds(160, 450, 130, 32);
-		btnResponder.addActionListener(new ActionListener() {
+		btnAssumir = new JButton("Assumir");
+		btnAssumir.setBounds(160, 450, 130, 32);
+		btnAssumir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				responder();
+				assumir();
 			}
 		});
-		contentPane.add(btnResponder);
+		contentPane.add(btnAssumir);
 
 		btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.setBounds(305, 450, 130, 32);
@@ -232,7 +237,7 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnFinalizar);
 
 		lblMensagens = new JLabel("Mensagens");
-		lblMensagens.setBounds(590, 15, 200, 18);
+		lblMensagens.setBounds(950, 15, 200, 18);
 		contentPane.add(lblMensagens);
 
 		txtMensagens = new JTextArea();
@@ -240,19 +245,19 @@ public class GuiCadastroTicket extends JFrame {
 		txtMensagens.setWrapStyleWord(true);
 		txtMensagens.setEditable(false);
 		scrollMensagens = new JScrollPane(txtMensagens);
-		scrollMensagens.setBounds(590, 34, 340, 285);
+		scrollMensagens.setBounds(950, 34, 330, 285);
 		contentPane.add(scrollMensagens);
 
 		lblNovaMensagem = new JLabel("Nova mensagem");
-		lblNovaMensagem.setBounds(590, 323, 200, 18);
+		lblNovaMensagem.setBounds(950, 323, 200, 18);
 		contentPane.add(lblNovaMensagem);
 
-		
+
 		txtNovaMensagem = new JTextField();
-		txtNovaMensagem.setBounds(590, 345, 250, 28);
+		txtNovaMensagem.setBounds(950, 345, 240, 28);
 		contentPane.add(txtNovaMensagem);
 		btnEnviarMensagem = new JButton("Enviar");
-		btnEnviarMensagem.setBounds(850, 345, 80, 28);
+		btnEnviarMensagem.setBounds(1200, 345, 80, 28);
 		btnEnviarMensagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				enviarMensagem();
@@ -261,16 +266,16 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnEnviarMensagem);
 
 		lblAnexos = new JLabel("Anexos");
-		lblAnexos.setBounds(950, 15, 200, 18);
+		lblAnexos.setBounds(590, 15, 200, 18);
 		contentPane.add(lblAnexos);
 
 		listaAnexos = new JList<>(new DefaultListModel<String>());
 		scrollAnexos = new JScrollPane(listaAnexos);
-		scrollAnexos.setBounds(950, 34, 330, 285);
+		scrollAnexos.setBounds(590, 34, 330, 285);
 		contentPane.add(scrollAnexos);
 
 		btnAnexar = new JButton("Anexar arquivo");
-		btnAnexar.setBounds(950, 345, 160, 28);
+		btnAnexar.setBounds(590, 345, 160, 28);
 		btnAnexar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				anexarArquivo();
@@ -279,7 +284,7 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnAnexar);
 
 		btnBaixarAnexo = new JButton("Baixar");
-		btnBaixarAnexo.setBounds(1120, 345, 160, 28);
+		btnBaixarAnexo.setBounds(760, 345, 160, 28);
 		btnBaixarAnexo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				baixarAnexo();
@@ -294,7 +299,7 @@ public class GuiCadastroTicket extends JFrame {
 	private void atualizarVisibilidadeBotoes() {
 		if (!modoEdicao) {
 			btnSalvar.setVisible(true);
-			btnResponder.setVisible(false);
+			btnAssumir.setVisible(false);
 			btnFinalizar.setVisible(false);
 			return;
 		}
@@ -302,10 +307,10 @@ public class GuiCadastroTicket extends JFrame {
 		btnSalvar.setVisible(false);
 
 		Status status = ticket.getStatus();
-		boolean podeResponder = status == Status.ABERTO && temPermissao(Permissao.RESPONDER_TICKET);
+		boolean podeAssumir = status == Status.ABERTO && temPermissao(Permissao.RESPONDER_TICKET);
 		boolean podeFinalizar = status != Status.FECHADO && temPermissao(Permissao.FECHAR_TICKET);
 
-		btnResponder.setVisible(podeResponder);
+		btnAssumir.setVisible(podeAssumir);
 		btnFinalizar.setVisible(podeFinalizar);
 	}
 
@@ -317,16 +322,18 @@ public class GuiCadastroTicket extends JFrame {
 		cmbPrioridade.setEnabled(editavel);
 		cmbCategoria.setEnabled(editavel);
 
+		boolean fechado = modoEdicao && ticket.getStatus() == Status.FECHADO;
+
 		scrollMensagens.setVisible(modoEdicao);
 		lblMensagens.setVisible(modoEdicao);
-		boolean podeNovaMensagem = modoEdicao && ticket.getStatus() != Status.FECHADO;
+		boolean podeNovaMensagem = modoEdicao && !fechado;
 		lblNovaMensagem.setVisible(podeNovaMensagem);
 		txtNovaMensagem.setVisible(podeNovaMensagem);
 		btnEnviarMensagem.setVisible(podeNovaMensagem);
 
-		scrollAnexos.setVisible(modoEdicao);
-		lblAnexos.setVisible(modoEdicao);
-		btnAnexar.setVisible(modoEdicao);
+		scrollAnexos.setVisible(true);
+		lblAnexos.setVisible(true);
+		btnAnexar.setVisible(!fechado);
 		btnBaixarAnexo.setVisible(modoEdicao);
 	}
 
@@ -447,6 +454,11 @@ public class GuiCadastroTicket extends JFrame {
 
 		File arquivo = seletor.getSelectedFile();
 
+		if (arquivo.length() > 16 * 1024 * 1024) {
+			JOptionPane.showMessageDialog(this, "Arquivo muito grande. O tamanho maximo permitido e 16 MB.");
+			return;
+		}
+
 		try {
 			byte[] conteudo = Files.readAllBytes(arquivo.toPath());
 
@@ -455,21 +467,34 @@ public class GuiCadastroTicket extends JFrame {
 			anexo.setTipoArquivo(extensao(arquivo.getName()));
 			anexo.setArquivo(conteudo);
 			anexo.setDataEnvio(LocalDateTime.now());
-			anexo.setTicket(ticket);
 			anexo.setEnviadoPor(usuarioLogado);
 
-			ArquivoTicketDAO dao = new ArquivoTicketDAO(anexo);
-			String resultado = dao.atualizar(TipoOperacaoBD.INCLUSAO);
+			if (modoEdicao) {
+				anexo.setTicket(ticket);
+				ArquivoTicketDAO dao = new ArquivoTicketDAO(anexo);
+				String resultado = dao.atualizar(TipoOperacaoBD.INCLUSAO);
 
-			if (resultado.startsWith("Erro") || resultado.startsWith("Falha")) {
-				JOptionPane.showMessageDialog(this, resultado);
-				return;
+				if (resultado.startsWith("Erro") || resultado.startsWith("Falha")) {
+					JOptionPane.showMessageDialog(this, resultado);
+					return;
+				}
+
+				carregarAnexos();
+			} else {
+				anexosPendentes.add(anexo);
+				mostrarAnexosPendentes();
 			}
-
-			carregarAnexos();
 		} catch (Exception erro) {
 			JOptionPane.showMessageDialog(this, "Erro ao ler o arquivo: " + erro.getMessage());
 		}
+	}
+
+	private void mostrarAnexosPendentes() {
+		DefaultListModel<String> modelo = new DefaultListModel<>();
+		for (int i = 0; i < anexosPendentes.size(); i++) {
+			modelo.addElement(anexosPendentes.get(i).getNomeArquivo());
+		}
+		listaAnexos.setModel(modelo);
 	}
 
 	private void baixarAnexo() {
@@ -560,14 +585,21 @@ public class GuiCadastroTicket extends JFrame {
 
 		TicketDAO dao = new TicketDAO(novo);
 		String msg = dao.atualizar(TipoOperacaoBD.INCLUSAO);
-		JOptionPane.showMessageDialog(this, msg);
 
 		if (!msg.startsWith("Erro") && !msg.startsWith("Falha")) {
+			for (int i = 0; i < anexosPendentes.size(); i++) {
+				ArquivoTicket anexo = anexosPendentes.get(i);
+				anexo.setTicket(novo);
+				new ArquivoTicketDAO(anexo).atualizar(TipoOperacaoBD.INCLUSAO);
+			}
+			JOptionPane.showMessageDialog(this, msg);
 			voltar();
+		} else {
+			JOptionPane.showMessageDialog(this, msg);
 		}
 	}
 
-	private void responder() {
+	private void assumir() {
 		int resposta = JOptionPane.showConfirmDialog(
 			this,
 			"Assumir este ticket para atendimento?",
@@ -586,7 +618,10 @@ public class GuiCadastroTicket extends JFrame {
 		JOptionPane.showMessageDialog(this, msg);
 
 		if (!msg.startsWith("Erro") && !msg.startsWith("Falha")) {
-			voltar();
+			lblStatus.setText(ticket.getStatus().name());
+			lblRespondidoPor.setText(usuarioLogado.getNome());
+			atualizarVisibilidadeBotoes();
+			atualizarVisibilidadeCampos();
 		}
 	}
 
