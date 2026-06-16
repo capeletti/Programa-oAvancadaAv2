@@ -51,7 +51,7 @@ public class GuiListarTickets extends JFrame {
 		contentPane.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 60, 844, 320);
+		scrollPane.setBounds(20, 60, 844, 360);
 		contentPane.add(scrollPane);
 
 		modeloTabela = new DefaultTableModel(
@@ -208,9 +208,9 @@ public class GuiListarTickets extends JFrame {
 				modeloTabela.addRow(new Object[] {
 					t.getId(),
 					t.getTitulo(),
-					t.getStatus() != null ? t.getStatus().name() : "",
-					t.getPrioridade() != null ? t.getPrioridade().name() : "",
-					t.getCategoria() != null ? t.getCategoria().name() : "",
+					t.getStatus() != null ? t.getStatus().getDescricao() : "",
+					t.getPrioridade() != null ? t.getPrioridade().getDescricao() : "",
+					t.getCategoria() != null ? t.getCategoria().getDescricao() : "",
 					t.getSetorDestino() != null ? t.getSetorDestino().getDescricao() : "",
 					t.getDataAbertura() != null ? t.getDataAbertura().format(formato) : ""
 				});

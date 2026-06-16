@@ -63,7 +63,8 @@ public class GuiCadastroTicket extends JFrame {
 	private JButton btnCancelar;
 	private JButton btnSalvar;
 	private JButton btnAssumir;
-	private JButton btnFinalizar;
+	private JButton btnConcluir;
+	private JButton btnCancelarTicket;
 	private JTextArea txtMensagens;
 	private JTextField txtNovaMensagem;
 	private JButton btnEnviarMensagem;
@@ -105,9 +106,9 @@ public class GuiCadastroTicket extends JFrame {
 		setTitle(modoEdicao ? "Detalhes do Ticket #" + ticket.getId() : "Novo Ticket");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		if (modoEdicao) {
-			setBounds(100, 100, 1300, 540);
+			setBounds(100, 100, 830, 700);
 		} else {
-			setBounds(100, 100, 960, 540);
+			setBounds(100, 100, 830, 425);
 		}
 		setLocationRelativeTo(null);
 
@@ -117,91 +118,91 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblTitulo = new JLabel("Titulo");
-		lblTitulo.setBounds(20, 15, 80, 18);
+		lblTitulo.setBounds(20, 135, 80, 18);
 		contentPane.add(lblTitulo);
 
 		txtTitulo = new JTextField();
-		txtTitulo.setBounds(20, 34, 550, 28);
+		txtTitulo.setBounds(20, 155, 430, 28);
 		contentPane.add(txtTitulo);
 
 		JLabel lblDescricao = new JLabel("Descricao");
-		lblDescricao.setBounds(20, 72, 80, 18);
+		lblDescricao.setBounds(20, 190, 80, 18);
 		contentPane.add(lblDescricao);
 
 		txtDescricao = new JTextArea();
 		txtDescricao.setLineWrap(true);
 		txtDescricao.setWrapStyleWord(true);
 		JScrollPane scrollDescricao = new JScrollPane(txtDescricao);
-		scrollDescricao.setBounds(20, 91, 550, 90);
+		scrollDescricao.setBounds(20, 210, 430, 110);
 		contentPane.add(scrollDescricao);
 
 		JLabel lblSetor = new JLabel("Setor destino");
-		lblSetor.setBounds(20, 192, 120, 18);
+		lblSetor.setBounds(20, 70, 120, 18);
 		contentPane.add(lblSetor);
 
 		cmbSetor = new JComboBox<>();
 		cmbSetor.setModel(new DefaultComboBoxModel<>(Setor.values()));
-		cmbSetor.setBounds(20, 211, 175, 26);
+		cmbSetor.setBounds(20, 90, 175, 26);
 		cmbSetor.setSelectedIndex(-1);
 		contentPane.add(cmbSetor);
 
 		JLabel lblPrioridade = new JLabel("Prioridade");
-		lblPrioridade.setBounds(207, 192, 120, 18);
+		lblPrioridade.setBounds(580, 15, 120, 18);
 		contentPane.add(lblPrioridade);
 
 		cmbPrioridade = new JComboBox<>();
 		cmbPrioridade.setModel(new DefaultComboBoxModel<>(Prioridade.values()));
-		cmbPrioridade.setBounds(207, 211, 175, 26);
+		cmbPrioridade.setBounds(580, 34, 175, 26);
 		cmbPrioridade.setSelectedIndex(-1);
 		contentPane.add(cmbPrioridade);
 
 		JLabel lblCategoria = new JLabel("Categoria");
-		lblCategoria.setBounds(395, 192, 120, 18);
+		lblCategoria.setBounds(580, 66, 120, 18);
 		contentPane.add(lblCategoria);
 
 		cmbCategoria = new JComboBox<>();
 		cmbCategoria.setModel(new DefaultComboBoxModel<>(Categoria.values()));
-		cmbCategoria.setBounds(395, 211, 175, 26);
+		cmbCategoria.setBounds(580, 85, 175, 26);
 		cmbCategoria.setSelectedIndex(-1);
 		contentPane.add(cmbCategoria);
 
 		JLabel lblStatusFixo = new JLabel("Status:");
-		lblStatusFixo.setBounds(20, 260, 60, 18);
+		lblStatusFixo.setBounds(20, 43, 90, 18);
 		contentPane.add(lblStatusFixo);
-		lblStatus = new JLabel("ABERTO");
-		lblStatus.setBounds(80, 260, 200, 18);
+		lblStatus = new JLabel("Aberto");
+		lblStatus.setBounds(115, 43, 165, 18);
 		contentPane.add(lblStatus);
 
 		JLabel lblDataAberturaFixo = new JLabel("Aberto em:");
-		lblDataAberturaFixo.setBounds(20, 285, 100, 18);
+		lblDataAberturaFixo.setBounds(300, 18, 90, 18);
 		contentPane.add(lblDataAberturaFixo);
 		lblDataAbertura = new JLabel("-");
-		lblDataAbertura.setBounds(110, 285, 200, 18);
+		lblDataAbertura.setBounds(395, 18, 165, 18);
 		contentPane.add(lblDataAbertura);
 
 		JLabel lblDataFechamentoFixo = new JLabel("Fechado em:");
-		lblDataFechamentoFixo.setBounds(20, 310, 100, 18);
+		lblDataFechamentoFixo.setBounds(300, 43, 100, 18);
 		contentPane.add(lblDataFechamentoFixo);
 		lblDataFechamento = new JLabel("-");
-		lblDataFechamento.setBounds(110, 310, 200, 18);
+		lblDataFechamento.setBounds(405, 43, 155, 18);
 		contentPane.add(lblDataFechamento);
 
 		JLabel lblCriadoPorFixo = new JLabel("Criado por:");
-		lblCriadoPorFixo.setBounds(20, 335, 110, 18);
+		lblCriadoPorFixo.setBounds(20, 18, 90, 18);
 		contentPane.add(lblCriadoPorFixo);
 		lblCriadoPor = new JLabel("-");
-		lblCriadoPor.setBounds(135, 335, 200, 18);
+		lblCriadoPor.setBounds(115, 18, 165, 18);
 		contentPane.add(lblCriadoPor);
 
 		JLabel lblRespondidoPorFixo = new JLabel("Respondido por:");
-		lblRespondidoPorFixo.setBounds(20, 360, 150, 18);
+		lblRespondidoPorFixo.setBounds(300, 70, 110, 18);
 		contentPane.add(lblRespondidoPorFixo);
 		lblRespondidoPor = new JLabel("-");
-		lblRespondidoPor.setBounds(170, 360, 200, 18);
+		lblRespondidoPor.setBounds(415, 70, 145, 18);
 		contentPane.add(lblRespondidoPor);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(20, 450, 120, 32);
+		btnCancelar.setBounds(20, 335, 90, 30);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				voltar();
@@ -210,7 +211,7 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnCancelar);
 
 		btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(450, 450, 120, 32);
+		btnSalvar.setBounds(354, 335, 96, 30);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				salvar();
@@ -219,7 +220,7 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnSalvar);
 
 		btnAssumir = new JButton("Assumir");
-		btnAssumir.setBounds(160, 450, 130, 32);
+		btnAssumir.setBounds(204, 335, 100, 30);
 		btnAssumir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				assumir();
@@ -227,17 +228,26 @@ public class GuiCadastroTicket extends JFrame {
 		});
 		contentPane.add(btnAssumir);
 
-		btnFinalizar = new JButton("Finalizar");
-		btnFinalizar.setBounds(305, 450, 130, 32);
-		btnFinalizar.addActionListener(new ActionListener() {
+		btnConcluir = new JButton("Concluir");
+		btnConcluir.setBounds(204, 335, 100, 30);
+		btnConcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finalizar();
+				concluir();
 			}
 		});
-		contentPane.add(btnFinalizar);
+		contentPane.add(btnConcluir);
+
+		btnCancelarTicket = new JButton("Cancelar Ticket");
+		btnCancelarTicket.setBounds(314, 335, 136, 30);
+		btnCancelarTicket.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancelarTicket();
+			}
+		});
+		contentPane.add(btnCancelarTicket);
 
 		lblMensagens = new JLabel("Mensagens");
-		lblMensagens.setBounds(950, 15, 200, 18);
+		lblMensagens.setBounds(20, 378, 200, 18);
 		contentPane.add(lblMensagens);
 
 		txtMensagens = new JTextArea();
@@ -245,19 +255,19 @@ public class GuiCadastroTicket extends JFrame {
 		txtMensagens.setWrapStyleWord(true);
 		txtMensagens.setEditable(false);
 		scrollMensagens = new JScrollPane(txtMensagens);
-		scrollMensagens.setBounds(950, 34, 330, 285);
+		scrollMensagens.setBounds(20, 398, 770, 150);
 		contentPane.add(scrollMensagens);
 
 		lblNovaMensagem = new JLabel("Nova mensagem");
-		lblNovaMensagem.setBounds(950, 323, 200, 18);
+		lblNovaMensagem.setBounds(20, 553, 150, 18);
 		contentPane.add(lblNovaMensagem);
 
 
 		txtNovaMensagem = new JTextField();
-		txtNovaMensagem.setBounds(950, 345, 240, 28);
+		txtNovaMensagem.setBounds(20, 573, 680, 28);
 		contentPane.add(txtNovaMensagem);
 		btnEnviarMensagem = new JButton("Enviar");
-		btnEnviarMensagem.setBounds(1200, 345, 80, 28);
+		btnEnviarMensagem.setBounds(710, 573, 80, 28);
 		btnEnviarMensagem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				enviarMensagem();
@@ -266,16 +276,16 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnEnviarMensagem);
 
 		lblAnexos = new JLabel("Anexos");
-		lblAnexos.setBounds(590, 15, 200, 18);
+		lblAnexos.setBounds(470, 190, 100, 18);
 		contentPane.add(lblAnexos);
 
 		listaAnexos = new JList<>(new DefaultListModel<String>());
 		scrollAnexos = new JScrollPane(listaAnexos);
-		scrollAnexos.setBounds(590, 34, 330, 285);
+		scrollAnexos.setBounds(470, 210, 320, 110);
 		contentPane.add(scrollAnexos);
 
 		btnAnexar = new JButton("Anexar arquivo");
-		btnAnexar.setBounds(590, 345, 160, 28);
+		btnAnexar.setBounds(470, 155, 155, 28);
 		btnAnexar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				anexarArquivo();
@@ -284,7 +294,7 @@ public class GuiCadastroTicket extends JFrame {
 		contentPane.add(btnAnexar);
 
 		btnBaixarAnexo = new JButton("Baixar");
-		btnBaixarAnexo.setBounds(760, 345, 160, 28);
+		btnBaixarAnexo.setBounds(635, 155, 155, 28);
 		btnBaixarAnexo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				baixarAnexo();
@@ -298,20 +308,28 @@ public class GuiCadastroTicket extends JFrame {
 
 	private void atualizarVisibilidadeBotoes() {
 		if (!modoEdicao) {
+			btnCancelar.setText("Cancelar");
+			btnCancelar.setBounds(20, 335, 90, 30);
 			btnSalvar.setVisible(true);
 			btnAssumir.setVisible(false);
-			btnFinalizar.setVisible(false);
+			btnConcluir.setVisible(false);
+			btnCancelarTicket.setVisible(false);
 			return;
 		}
 
+		btnCancelar.setText("Voltar");
+		btnCancelar.setBounds(20, 615, 90, 30);
 		btnSalvar.setVisible(false);
 
 		Status status = ticket.getStatus();
+		boolean encerrado = status == Status.FECHADO || status == Status.CANCELADO;
 		boolean podeAssumir = status == Status.ABERTO && temPermissao(Permissao.RESPONDER_TICKET);
-		boolean podeFinalizar = status != Status.FECHADO && temPermissao(Permissao.FECHAR_TICKET);
+		boolean podeConcluir = status == Status.EM_ANDAMENTO && temPermissao(Permissao.FECHAR_TICKET);
+		boolean podeCancelar = !encerrado && temPermissao(Permissao.FECHAR_TICKET);
 
 		btnAssumir.setVisible(podeAssumir);
-		btnFinalizar.setVisible(podeFinalizar);
+		btnConcluir.setVisible(podeConcluir);
+		btnCancelarTicket.setVisible(podeCancelar);
 	}
 
 	private void atualizarVisibilidadeCampos() {
@@ -322,7 +340,7 @@ public class GuiCadastroTicket extends JFrame {
 		cmbPrioridade.setEnabled(editavel);
 		cmbCategoria.setEnabled(editavel);
 
-		boolean fechado = modoEdicao && ticket.getStatus() == Status.FECHADO;
+		boolean fechado = modoEdicao && (ticket.getStatus() == Status.FECHADO || ticket.getStatus() == Status.CANCELADO);
 
 		scrollMensagens.setVisible(modoEdicao);
 		lblMensagens.setVisible(modoEdicao);
@@ -351,7 +369,7 @@ public class GuiCadastroTicket extends JFrame {
 		cmbPrioridade.setSelectedItem(ticket.getPrioridade());
 		cmbCategoria.setSelectedItem(ticket.getCategoria());
 
-		lblStatus.setText(ticket.getStatus().name());
+		lblStatus.setText(ticket.getStatus().getDescricao());
 
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		if (ticket.getDataAbertura() != null) {
@@ -618,17 +636,17 @@ public class GuiCadastroTicket extends JFrame {
 		JOptionPane.showMessageDialog(this, msg);
 
 		if (!msg.startsWith("Erro") && !msg.startsWith("Falha")) {
-			lblStatus.setText(ticket.getStatus().name());
+			lblStatus.setText(ticket.getStatus().getDescricao());
 			lblRespondidoPor.setText(usuarioLogado.getNome());
 			atualizarVisibilidadeBotoes();
 			atualizarVisibilidadeCampos();
 		}
 	}
 
-	private void finalizar() {
+	private void concluir() {
 		int resposta = JOptionPane.showConfirmDialog(
 			this,
-			"Finalizar este ticket?",
+			"Concluir este ticket?",
 			"Confirmacao",
 			JOptionPane.YES_NO_OPTION
 		);
@@ -642,6 +660,29 @@ public class GuiCadastroTicket extends JFrame {
 		if (ticket.getRespondidoPor() == null) {
 			ticket.setRespondidoPor(usuarioLogado);
 		}
+
+		TicketDAO dao = new TicketDAO(ticket);
+		String msg = dao.atualizar(TipoOperacaoBD.ALTERACAO);
+		JOptionPane.showMessageDialog(this, msg);
+
+		if (!msg.startsWith("Erro") && !msg.startsWith("Falha")) {
+			voltar();
+		}
+	}
+
+	private void cancelarTicket() {
+		int resposta = JOptionPane.showConfirmDialog(
+			this,
+			"Cancelar este ticket? Esta acao nao pode ser desfeita.",
+			"Confirmacao",
+			JOptionPane.YES_NO_OPTION
+		);
+		if (resposta != JOptionPane.YES_OPTION) {
+			return;
+		}
+
+		ticket.setStatus(Status.CANCELADO);
+		ticket.setDataFechamento(LocalDateTime.now());
 
 		TicketDAO dao = new TicketDAO(ticket);
 		String msg = dao.atualizar(TipoOperacaoBD.ALTERACAO);

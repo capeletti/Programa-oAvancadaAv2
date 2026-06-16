@@ -122,7 +122,7 @@ public class TicketDAO implements OperacaoBD {
 
 		try {
 			sql = "SELECT * FROM ticket WHERE setor_destino = ? "
-			    + "ORDER BY FIELD(status, 'ABERTO', 'EM_ANDAMENTO', 'FECHADO'), "
+			    + "ORDER BY FIELD(status, 'ABERTO', 'EM_ANDAMENTO', 'FECHADO', 'CANCELADO'), "
 			    + "FIELD(prioridade, 'URGENTE', 'ALTA', 'MEDIA', 'BAIXA'), data_abertura ASC";
 			statement = bd.getConnection().prepareStatement(sql);
 			statement.setString(1, setor.name());
