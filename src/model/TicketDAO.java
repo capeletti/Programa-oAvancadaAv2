@@ -176,24 +176,35 @@ public class TicketDAO implements OperacaoBD {
 		t.setId(rs.getInt("id"));
 		t.setTitulo(rs.getString("titulo"));
 		t.setDescricao(rs.getString("descricao"));
-		t.setSetorDestino(Setor.valueOf(rs.getString("setor_destino")));
-		t.setStatus(Status.valueOf(rs.getString("status")));
-		t.setPrioridade(Prioridade.valueOf(rs.getString("prioridade")));
-		t.setCategoria(Categoria.valueOf(rs.getString("categoria")));
-		t.setDataAbertura(rs.getDate("data_abertura"));
-		t.setDataFechamento(rs.getDate("data_fechamento"));
 
-		t.setCriadoPor(new Usuario(
-			rs.getInt("id_criado_por"),
-			null, null, null, null, null, null
-		));
+		try {
+			t.setSetorDestino(Setor.valueOf(rs.getString("setor_destino")));
+			t.setStatus(Status.valueOf(rs.getString("status")));
+			t.setPrioridade(Prioridade.valueOf(rs.getString("prioridade")));
+			t.setCategoria(Categoria.valueOf(rs.getString("categoria")));
+		} catch (IllegalArgumentException erro) {
+			System.out.println("Valor invalido de enum no ticket " + t.getId() + ": " + erro.getMessage());
+		}
+
+		java.sql.Timestamp tsAbertura = rs.getTimestamp("data_abertura");
+		if (tsAbertura != null) {
+			t.setDataAbertura(tsAbertura.toLocalDateTime());
+		}
+
+		java.sql.Timestamp tsFechamento = rs.getTimestamp("data_fechamento");
+		if (tsFechamento != null) {
+			t.setDataFechamento(tsFechamento.toLocalDateTime());
+		}
+
+		Usuario criadoPor = new Usuario();
+		criadoPor.setId(rs.getInt("id_criado_por"));
+		t.setCriadoPor(criadoPor);
 
 		int idRespondido = rs.getInt("id_respondido_por");
 		if (!rs.wasNull()) {
-			t.setRespondidoPor(new Usuario(
-				idRespondido,
-				null, null, null, null, null, null
-			));
+			Usuario respondidoPor = new Usuario();
+			respondidoPor.setId(idRespondido);
+			t.setRespondidoPor(respondidoPor);
 		}
 	}
 
@@ -204,12 +215,12 @@ public class TicketDAO implements OperacaoBD {
 		statement.setString(4, ticket.getStatus().name());
 		statement.setString(5, ticket.getPrioridade().name());
 		statement.setString(6, ticket.getCategoria().name());
-		statement.setDate(7, new java.sql.Date(ticket.getDataAbertura().getTime()));
+		statement.setTimestamp(7, java.sql.Timestamp.valueOf(ticket.getDataAbertura()));
 
 		if (ticket.getDataFechamento() != null) {
-			statement.setDate(8, new java.sql.Date(ticket.getDataFechamento().getTime()));
+			statement.setTimestamp(8, java.sql.Timestamp.valueOf(ticket.getDataFechamento()));
 		} else {
-			statement.setNull(8, java.sql.Types.DATE);
+			statement.setNull(8, java.sql.Types.TIMESTAMP);
 		}
 
 		statement.setInt(9, ticket.getCriadoPor().getId());

@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Ticket implements Comparable<Ticket>{
 
@@ -12,8 +12,8 @@ public class Ticket implements Comparable<Ticket>{
 	private Status status;
 	private Prioridade prioridade;
 	private Categoria categoria;
-	private Date dataAbertura;
-	private Date dataFechamento;
+	private LocalDateTime dataAbertura;
+	private LocalDateTime dataFechamento;
     private Usuario criadoPor;
     private Usuario respondidoPor;
 	
@@ -103,19 +103,19 @@ public class Ticket implements Comparable<Ticket>{
 		this.categoria = categoria;
 	}
 
-	public Date getDataAbertura() {
+	public LocalDateTime getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(Date dataAbertura) {
+	public void setDataAbertura(LocalDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
 
-	public Date getDataFechamento() {
+	public LocalDateTime getDataFechamento() {
 		return dataFechamento;
 	}
 
-	public void setDataFechamento(Date dataFechamento) {
+	public void setDataFechamento(LocalDateTime dataFechamento) {
 		this.dataFechamento = dataFechamento;
 	}
 	@Override
