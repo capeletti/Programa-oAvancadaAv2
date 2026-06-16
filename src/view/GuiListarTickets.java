@@ -121,6 +121,7 @@ public class GuiListarTickets extends JFrame {
 			}
 		});
 		contentPane.add(btnProximo);
+		btnProximo.setVisible(temPermissao(Permissao.RESPONDER_TICKET));
 
 		JButton btnFiltro = new JButton("Filtrar: todos");
 		btnFiltro.setBounds(490, 15, 180, 30);
@@ -165,6 +166,11 @@ public class GuiListarTickets extends JFrame {
 	}
 
 	private void abrirProximoDaFila() {
+		if (!temPermissao(Permissao.RESPONDER_TICKET)) {
+			JOptionPane.showMessageDialog(this, "Sem permissao para atender tickets.");
+			return;
+		}
+
 		if (usuarioLogado == null || usuarioLogado.getSetor() == null) {
 			JOptionPane.showMessageDialog(this, "Usuario sem setor definido.");
 			return;
