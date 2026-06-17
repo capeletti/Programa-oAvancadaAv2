@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="gHpU_INSIFpQgRWK8cRw-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="ermi" vertex="1">
+        <mxCell id="gHpU_INSIFpQgRWK8cRw-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Equipe&lt;br&gt;Sistema de gestao de tickets internos&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;Julio (JCF) - Maikon (MDJ) - Rafael (RCZ)&lt;/font&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="400" x="120" y="100" as="geometry" />
         </mxCell>
         <mxCell id="gHpU_INSIFpQgRWK8cRw-3" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=light-dark(#60A917,#4A890C);fontColor=#000000;strokeColor=#60A917;fontFamily=Helvetica;fontSize=12;" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Usuario&lt;/font&gt;" vertex="1">
