@@ -25,7 +25,6 @@ import javax.swing.border.EmptyBorder;
 
 import model.ArquivoTicket;
 import model.ArquivoTicketDAO;
-import model.BD;
 import model.Categoria;
 import model.Mensagem;
 import model.MensagemDAO;
@@ -43,7 +42,6 @@ public class GuiCadastroTicket extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private BD bd;
 	private Usuario usuarioLogado;
 	private Ticket ticket;
 	private boolean modoEdicao;
@@ -83,8 +81,7 @@ public class GuiCadastroTicket extends JFrame {
 
 
 
-	public GuiCadastroTicket(BD bd, Usuario usuarioLogado) {
-		this.bd = bd;
+	public GuiCadastroTicket(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		this.ticket = null;
 		this.modoEdicao = false;
@@ -92,8 +89,7 @@ public class GuiCadastroTicket extends JFrame {
 		inicializarComponentes();
 	}
 
-	public GuiCadastroTicket(BD bd, Usuario usuarioLogado, Ticket ticket) {
-		this.bd = bd;
+	public GuiCadastroTicket(Usuario usuarioLogado, Ticket ticket) {
 		this.usuarioLogado = usuarioLogado;
 		this.ticket = ticket;
 		this.modoEdicao = true;
@@ -472,7 +468,7 @@ public class GuiCadastroTicket extends JFrame {
 
 		File arquivo = seletor.getSelectedFile();
 
-		if (arquivo.length() > 16 * 1024 * 1024) {
+		if (arquivo.length() >= 16 * 1024 * 1024) {
 			JOptionPane.showMessageDialog(this, "Arquivo muito grande. O tamanho maximo permitido e 16 MB.");
 			return;
 		}
@@ -549,7 +545,7 @@ public class GuiCadastroTicket extends JFrame {
 
 	private void voltar() {
 		dispose();
-		GuiListarTickets tela = new GuiListarTickets(bd, usuarioLogado);
+		GuiListarTickets tela = new GuiListarTickets(usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -605,12 +601,20 @@ public class GuiCadastroTicket extends JFrame {
 		String msg = dao.atualizar(TipoOperacaoBD.INCLUSAO);
 
 		if (!msg.startsWith("Erro") && !msg.startsWith("Falha")) {
+			int anexosComErro = 0;
 			for (int i = 0; i < anexosPendentes.size(); i++) {
 				ArquivoTicket anexo = anexosPendentes.get(i);
 				anexo.setTicket(novo);
-				new ArquivoTicketDAO(anexo).atualizar(TipoOperacaoBD.INCLUSAO);
+				String resultadoAnexo = new ArquivoTicketDAO(anexo).atualizar(TipoOperacaoBD.INCLUSAO);
+				if (resultadoAnexo.startsWith("Erro") || resultadoAnexo.startsWith("Falha")) {
+					anexosComErro++;
+				}
 			}
-			JOptionPane.showMessageDialog(this, msg);
+			if (anexosComErro > 0) {
+				JOptionPane.showMessageDialog(this, "Ticket criado, mas " + anexosComErro + " anexo(s) nao foram salvos.");
+			} else {
+				JOptionPane.showMessageDialog(this, msg);
+			}
 			voltar();
 		} else {
 			JOptionPane.showMessageDialog(this, msg);

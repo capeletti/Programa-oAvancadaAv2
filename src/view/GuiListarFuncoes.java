@@ -18,7 +18,6 @@ import model.FuncaoDAO;
 import model.Funcao;
 import model.Permissao;
 import model.Usuario;
-import model.BD;
 
 public class GuiListarFuncoes extends JFrame {
 
@@ -27,7 +26,6 @@ public class GuiListarFuncoes extends JFrame {
 	private JTable table;
 	private DefaultTableModel modeloTabela;
 	private Usuario usuarioLogado;
-	private BD bd;
 
 	/**
 	 * Launch the application.
@@ -36,7 +34,7 @@ public class GuiListarFuncoes extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GuiListarFuncoes frame = new GuiListarFuncoes(null, null);
+					GuiListarFuncoes frame = new GuiListarFuncoes(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,8 +46,7 @@ public class GuiListarFuncoes extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GuiListarFuncoes(BD bd, Usuario usuarioLogado) {
-		this.bd = bd;
+	public GuiListarFuncoes(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 
 		setTitle("Lista de Funções Cadastradas");
@@ -123,7 +120,7 @@ public class GuiListarFuncoes extends JFrame {
 		btnFechar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				GuiMenuPrincipal tela = new GuiMenuPrincipal(bd, usuarioLogado);
+				GuiMenuPrincipal tela = new GuiMenuPrincipal(usuarioLogado);
 				tela.setVisible(true);
 			}
 		});

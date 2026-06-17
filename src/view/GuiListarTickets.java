@@ -16,7 +16,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import model.BD;
 import model.Permissao;
 import model.Ticket;
 import model.TicketDAO;
@@ -28,12 +27,10 @@ public class GuiListarTickets extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel modeloTabela;
-	private BD bd;
 	private Usuario usuarioLogado;
 	private boolean filtroMeuSetor;
 
-	public GuiListarTickets(BD bd, Usuario usuarioLogado) {
-		this.bd = bd;
+	public GuiListarTickets(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		this.filtroMeuSetor = false;
 		inicializarComponentes();
@@ -155,13 +152,13 @@ public class GuiListarTickets extends JFrame {
 
 	private void voltar() {
 		dispose();
-		GuiMenuPrincipal tela = new GuiMenuPrincipal(bd, usuarioLogado);
+		GuiMenuPrincipal tela = new GuiMenuPrincipal(usuarioLogado);
 		tela.setVisible(true);
 	}
 
 	private void novoTicket() {
 		dispose();
-		GuiCadastroTicket tela = new GuiCadastroTicket(bd, usuarioLogado);
+		GuiCadastroTicket tela = new GuiCadastroTicket(usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -185,7 +182,7 @@ public class GuiListarTickets extends JFrame {
 		}
 
 		dispose();
-		GuiCadastroTicket tela = new GuiCadastroTicket(bd, usuarioLogado, proximo);
+		GuiCadastroTicket tela = new GuiCadastroTicket(usuarioLogado, proximo);
 		tela.setVisible(true);
 	}
 
@@ -233,7 +230,7 @@ public class GuiListarTickets extends JFrame {
 
 		if (dao.localizar()) {
 			dispose();
-			GuiCadastroTicket tela = new GuiCadastroTicket(bd, usuarioLogado, t);
+			GuiCadastroTicket tela = new GuiCadastroTicket(usuarioLogado, t);
 			tela.setVisible(true);
 		} else {
 			JOptionPane.showMessageDialog(this, "Nao foi possivel carregar o ticket.");

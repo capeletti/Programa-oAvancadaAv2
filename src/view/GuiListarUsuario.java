@@ -10,7 +10,6 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import model.BD;
 import model.Usuario;
 import model.UsuarioDAO;
 
@@ -28,11 +27,9 @@ public class GuiListarUsuario extends JFrame {
 	private DefaultTableModel modeloTabela;
 	private JButton btnAdicionar;
 	private JButton btnVoltar;
-	private BD bd;
 	private Usuario usuarioLogado;
 
-	public GuiListarUsuario(BD bd, Usuario usuarioLogado) {
-		this.bd = bd;
+	public GuiListarUsuario(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		inicializarComponentes();
 	}
@@ -116,13 +113,13 @@ public class GuiListarUsuario extends JFrame {
 
 	private void adicionar() {
 		dispose();
-		GuiCadastroUsuario tela = new GuiCadastroUsuario(this.bd, this.usuarioLogado);
+		GuiCadastroUsuario tela = new GuiCadastroUsuario(this.usuarioLogado);
 		tela.setVisible(true);
 	}
 
 	private void voltar() {
 		dispose();
-		GuiMenuPrincipal tela = new GuiMenuPrincipal(this.bd, this.usuarioLogado);
+		GuiMenuPrincipal tela = new GuiMenuPrincipal(this.usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -170,7 +167,7 @@ public class GuiListarUsuario extends JFrame {
 
 		if(dao.localizar()) {
 			dispose();
-			GuiCadastroUsuario tela = new GuiCadastroUsuario(this.bd, this.usuarioLogado, usuario);
+			GuiCadastroUsuario tela = new GuiCadastroUsuario(this.usuarioLogado, usuario);
 			tela.setVisible(true);
 		}
 	}
