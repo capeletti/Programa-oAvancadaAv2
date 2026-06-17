@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.BD;
 import model.Usuario;
 import model.UsuarioDAO;
 
@@ -21,13 +20,11 @@ import java.awt.Font;
 public class GuiLogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private BD bd;
 	private JPanel contentPane;
 	private JTextField txtEmail;
 	private JPasswordField txtSenha;
 
-	public GuiLogin(BD bd) {
-		this.bd = bd;
+	public GuiLogin() {
 		inicializarComponentes();
 	}
 
@@ -103,7 +100,7 @@ public class GuiLogin extends JFrame {
 			if(usuario != null) {
 				JOptionPane.showMessageDialog(null, "Login realizado com sucesso!");
 				dispose();
-				GuiMenuPrincipal tela = new GuiMenuPrincipal(this.bd, usuario);
+				GuiMenuPrincipal tela = new GuiMenuPrincipal(usuario);
 				tela.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(null, "Email ou senha inválidos!");

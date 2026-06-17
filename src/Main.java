@@ -10,7 +10,7 @@ public class Main {
 	    if (bd.connect()) {
 	        
 	        java.awt.EventQueue.invokeLater(() -> {
-	            new GuiLogin(bd).setVisible(true);
+	            new GuiLogin().setVisible(true);
 	        });
 	    }
 

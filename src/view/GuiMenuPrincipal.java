@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import model.BD;
 import model.Permissao;
 import model.Usuario;
 
@@ -19,11 +18,9 @@ public class GuiMenuPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private BD bd;
 	private Usuario usuarioLogado;
 
-	public GuiMenuPrincipal(BD bd, Usuario usuarioLogado) {
-		this.bd = bd;
+	public GuiMenuPrincipal(Usuario usuarioLogado) {
 		this.usuarioLogado = usuarioLogado;
 		inicializarComponentes();
 	}
@@ -122,7 +119,7 @@ public class GuiMenuPrincipal extends JFrame {
 
 	private void abrirListarTickets() {
 		dispose();
-		GuiListarTickets tela = new GuiListarTickets(bd, usuarioLogado);
+		GuiListarTickets tela = new GuiListarTickets(usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -132,7 +129,7 @@ public class GuiMenuPrincipal extends JFrame {
 			return;
 		}
 		dispose();
-		GuiCadastroTicket tela = new GuiCadastroTicket(bd, usuarioLogado);
+		GuiCadastroTicket tela = new GuiCadastroTicket(usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -142,7 +139,7 @@ public class GuiMenuPrincipal extends JFrame {
 			return;
 		}
 		dispose();
-		GuiListarUsuario tela = new GuiListarUsuario(bd, usuarioLogado);
+		GuiListarUsuario tela = new GuiListarUsuario(usuarioLogado);
 		tela.setVisible(true);
 	}
 
@@ -152,13 +149,13 @@ public class GuiMenuPrincipal extends JFrame {
 			return;
 		}
 		dispose();
-		GuiListarFuncoes tela = new GuiListarFuncoes(bd, usuarioLogado);
+		GuiListarFuncoes tela = new GuiListarFuncoes(usuarioLogado);
 		tela.setVisible(true);
 	}
 
 	private void sair() {
 		dispose();
-		GuiLogin tela = new GuiLogin(bd);
+		GuiLogin tela = new GuiLogin();
 		tela.setVisible(true);
 	}
 }

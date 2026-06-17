@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 
-import model.BD;
 import model.Funcao;
 import model.FuncaoDAO;
 import model.Setor;
@@ -31,7 +30,6 @@ public class GuiCadastroUsuario extends JFrame {
 	private JTextField txtNome;
 	private JTextField txtEmail;
 	private JPasswordField txtSenha;
-	private BD bd;
 	private Usuario usuario;
 	private JButton btnSalvar;
 	private JButton btnExcluir;
@@ -43,9 +41,8 @@ public class GuiCadastroUsuario extends JFrame {
 	private JLabel lblInfoSenha;
 	private Usuario usuarioLogado;
 
-	public GuiCadastroUsuario(BD bd, Usuario usuarioLogado) {
+	public GuiCadastroUsuario(Usuario usuarioLogado) {
 
-	    this.bd = bd;
 	    this.usuario = null;
 	    this.modoEdicao = false;
 	    this.usuarioLogado = usuarioLogado;
@@ -56,9 +53,8 @@ public class GuiCadastroUsuario extends JFrame {
 	    lblInfoSenha.setVisible(modoEdicao);
 	}
 
-	public GuiCadastroUsuario(BD bd, Usuario usuarioLogado, Usuario usuario) {
+	public GuiCadastroUsuario(Usuario usuarioLogado, Usuario usuario) {
 
-	    this.bd = bd;
 	    this.usuario = usuario;
 	    this.modoEdicao = true;
 	    this.usuarioLogado = usuarioLogado;
@@ -163,7 +159,7 @@ public class GuiCadastroUsuario extends JFrame {
 
 	private void cancelar() {
 	    dispose();
-	    GuiListarUsuario tela = new GuiListarUsuario(bd, usuarioLogado);
+	    GuiListarUsuario tela = new GuiListarUsuario(usuarioLogado);
 	    tela.setVisible(true);
 	}
 
