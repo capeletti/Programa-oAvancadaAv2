@@ -142,7 +142,7 @@ public class GuiListarFuncoes extends JFrame {
 				String textoPermissoes = "";
 				ArrayList<Permissao> perms = f.getPermissoes();
 				for (int j = 0; j < perms.size(); j++) {
-					textoPermissoes += perms.get(j).name();
+					textoPermissoes += perms.get(j).getDescricao();
 					if (j < perms.size() - 1) {
 						textoPermissoes += ", ";
 					}
